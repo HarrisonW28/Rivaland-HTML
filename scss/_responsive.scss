@@ -1,6 +1,27 @@
 // ============================================
-// RESPONSIVE STYLES
+// RESPONSIVE STYLES - NAVIGATION GUIDE
 // ============================================
+// This file contains all media queries and mobile-specific styles
+//
+// BREAKPOINT STRUCTURE:
+// ──────────────────────────────────────────────────────────────
+// 📱 Desktop (default)          - No media query
+// 📱 Tablet (≤1024px)           - @media (max-width: $breakpoint-desktop)
+// 📱 Mobile Landscape/Tablet    - @media (min-width: 768px) and (max-width: 1024px)
+// 📱 Mobile (≤768px)            - @media (max-width: $breakpoint-tablet)
+// 📱 Small Mobile (≤480px)      - @media (max-width: $breakpoint-mobile)
+//
+// KEY SECTIONS:
+// ──────────────────────────────────────────────────────────────
+// • Navigation & Hero           - Mobile menu, hero padding
+// • Services Section            - Accordion reordering, button placement
+// • Projects Section            - List reordering, button placement
+// • Feature Section             - Image/text stacking
+// • News Section                - Card layout changes
+// • Footer                      - Grid column adjustments
+//
+// IMPORTANT: Mobile button styles must be inside mobile media queries!
+// ──────────────────────────────────────────────────────────────
 
 // Tablet (768px - 1024px)
 @media (max-width: $breakpoint-desktop) {
@@ -164,7 +185,7 @@
     }
 
     .footer-top {
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1.5fr 1fr 1fr; // Reduced first column to move address left
         padding: 0 $spacing-4xl;
     }
 
@@ -224,7 +245,7 @@
 // Mobile (up to 768px)
 @media (max-width: $breakpoint-tablet) {
     .nav {
-        padding: $spacing-lg $spacing-md;
+        padding: $spacing-lg $spacing-3xl;
 
         &.menu-open {
             position: relative;
@@ -281,10 +302,16 @@
             text-decoration: none;
         }
 
-        .mobile-logo,
-        .mobile-divider,
-        .mobile-contact {
+        .mobile-logo {
             display: none;
+        }
+        
+        .mobile-divider {
+            display: block; // Show divider in mobile menu
+        }
+        
+        .mobile-contact {
+            display: block; // Show contact button in mobile menu
         }
     }
 
@@ -301,27 +328,39 @@
     }
 
     .mobile-contact {
-        padding: $spacing-md $spacing-md;
+        padding: $spacing-md $spacing-md $spacing-md 0; // Remove right padding so arrow can reach edge
         position: relative;
         z-index: 1;
-        margin-bottom: 50px;
+        margin-bottom: $spacing-4xl; // Increased bottom margin to create more space above logo
     }
 
     .contact-btn-mobile {
         font-size: $font-size-2xl;
         color: $color-white;
         text-decoration: none;
-        display: inline-flex;
+        display: flex;
         align-items: center;
-        gap: $spacing-xs;
+        justify-content: space-between; // Push arrow to far right
+        width: 100%; // Take full width
+        white-space: nowrap; // Keep text and arrow on same line
+
+        .contact-text {
+            flex: 0 0 auto; // Don't grow or shrink
+        }
+
+        .contact-arrow {
+            flex: 0 0 auto; // Don't grow or shrink
+            margin-right: -$spacing-md; // Negative margin to push arrow to true edge
+            display: inline-flex; // Keep on same line
+            align-items: center;
+        }
 
         .button-arrow {
             width: $spacing-lg;
             height: $spacing-lg;
             flex-shrink: 0;
-            display: inline-block;
+            display: block;
             filter: brightness(0) invert(1);
-            vertical-align: middle;
         }
     }
 
@@ -378,7 +417,7 @@
         margin: auto 0;
 
         h1 {
-            font-size: $font-size-4xl;
+            font-size: $font-size-6xl;
             line-height: 1.2;
         }
     }
@@ -392,27 +431,59 @@
     }
 
     .services {
-        padding: $spacing-3xl 0;
-        grid-template-columns: 1fr;
+        padding: 0; // No top/bottom padding on mobile
+        display: flex;
+        flex-direction: column;
 
         &-card {
-            padding: $spacing-3xl $spacing-md;
+            padding: 0 $spacing-sm; // Reduced horizontal padding on mobile
+            order: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; // Vertically center content
+            gap: 0;
+            border-left: none; // Remove left border on mobile
+            border-right: none; // Remove right border on mobile
 
             .eyebrow {
-                font-size: $font-size-lg;
+                font-size: $font-size-xl; // 22px on mobile
                 margin-bottom: $spacing-lg;
+                order: 1;
+                padding: 0; // Remove padding for eyebrow on mobile
             }
 
             .link-button {
-                width: 100%;
-                max-width: 100%;
+                display: none; // Hide original button in services-card, will be moved and shown after Planning via JavaScript
             }
         }
     }
 
     .service-list {
+        order: 2;
         border-left: none;
         border-right: none;
+    }
+
+    // Style for button when moved after Planning (MOBILE ONLY)
+    .link-button-mobile {
+        order: 3;
+        display: flex !important;
+        width: calc(100% - #{$spacing-md * 2});
+        max-width: 100%;
+        margin: $spacing-lg $spacing-md $spacing-3xl;
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid $color-accent-teal-light;
+        background: $color-white;
+        padding: 12px $spacing-md;
+        color: $color-black;
+        text-decoration: none;
+        font-family: Roboto;
+        font-weight: $font-weight-light;
+        font-size: $font-size-md;
+        line-height: 38px;
+        @include button-hover-effect;
     }
 
     .service-header {
@@ -441,6 +512,7 @@
 
         &-image {
             padding: $spacing-3xl $spacing-md;
+            align-items: flex-start; // Push image to top of card on mobile
 
             img {
                 max-width: 100%;
@@ -451,7 +523,7 @@
             padding: $spacing-3xl $spacing-md;
 
             p {
-                font-size: $font-size-base;
+                font-size: $font-size-xl; // 22px on mobile
                 max-width: 100%;
             }
 
@@ -462,47 +534,94 @@
         }
 
         &-eyebrow {
-            font-size: $font-size-lg;
-            margin-bottom: $spacing-sm;
+            font-size: $font-size-xl; // 22px on mobile
         }
     }
 
     .projects {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
 
         &-left {
-            padding: $spacing-3xl $spacing-md;
+            padding: $spacing-3xl; // Equal padding on all sides
+            order: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
 
             h2 {
-                font-size: $font-size-5xl;
+                font-size: 34px; // 34px as specified
                 margin-bottom: $spacing-lg;
+                order: 1;
+            }
+
+            .projects-button {
+                display: none; // Hide original button in projects-left, will be moved and shown after project-list via JavaScript
             }
         }
     }
 
-    .projects-button {
-        width: 100%;
-    }
-
     .project-list {
+        order: 2;
         border: none;
         border-top: 1px solid $color-border;
     }
 
-    .project-item {
+    .project-card {
         padding: $spacing-md;
+        padding-left: $spacing-md; // Reduced left padding to move text further left on mobile
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: $spacing-md;
+        
+        .project-info {
+            width: 100%;
+        }
+        
+        .project-location {
+            br {
+                display: block; // Show line breaks on mobile
+            }
+        }
+        
+        .arrow-link {
+            align-self: flex-end; // Position arrow to bottom right
+            margin-top: auto; // Push to bottom
+            margin-right: $spacing-md; // Add whitespace on the right
+            margin-bottom: $spacing-xs; // Add whitespace at the bottom
+        }
+        
+        &:last-child {
+            border-bottom: 1px solid $color-border-light;
+        }
     }
 
-    .project-breadcrumb {
-        font-size: $font-size-base;
-    }
-
-    .project-name {
-        font-size: $font-size-xl;
+    // Style for button when moved after project-list (MOBILE ONLY)
+    .projects-button-mobile {
+        order: 3;
+        display: flex !important;
+        width: calc(100% - #{$spacing-md * 2});
+        max-width: 100%;
+        margin: $spacing-lg $spacing-md $spacing-3xl;
+        padding: $spacing-md;
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid $color-accent-teal-light;
+        background: $color-white;
+        color: $color-black;
+        text-decoration: none;
+        font-family: Roboto;
+        font-weight: $font-weight-light;
+        font-size: $font-size-md;
+        line-height: 38px;
+        @include button-hover-effect;
     }
 
     .arrow-link {
-        font-size: $font-size-4xl;
+        width: $font-size-4xl;
+        height: $font-size-4xl;
     }
 
     .news {
@@ -517,7 +636,7 @@
         width: 100%;
         max-width: 100%;
         height: auto;
-        min-height: auto;
+        min-height: 400px; // Ensure equal minimum height on mobile
 
         img {
             width: 100%;
@@ -529,6 +648,23 @@
 
     .news-content {
         padding: $spacing-lg $spacing-md;
+        position: relative; // Allow absolute positioning of arrow
+        flex: 1; // Take remaining space
+        display: flex;
+        flex-direction: column;
+    }
+
+    .news-title {
+        margin-bottom: $spacing-md; // Add margin to create space for arrow
+    }
+
+    .news-arrow {
+        position: static; // Remove absolute positioning on mobile
+        display: flex; // Display as flex for SVG
+        margin-top: $spacing-md; // Add top margin for spacing
+        align-self: flex-end; // Align to the right
+        width: $font-size-xl;
+        height: $font-size-xl;
     }
 
     .news-eyebrow {
@@ -536,7 +672,7 @@
     }
 
     .news-title {
-        font-size: $font-size-lg;
+        font-size: $font-size-2xl; // 24px on mobile
     }
 
     .site-footer {
@@ -547,6 +683,10 @@
         grid-template-columns: 1fr;
         gap: 30px;
         padding: 0 $spacing-md;
+    }
+
+    .footer-links {
+        margin-left: 0; // Remove desktop margin on mobile
     }
 
     .footer-divider {
@@ -586,7 +726,7 @@
 @media (max-width: $breakpoint-mobile) {
     .hero-content {
         h1 {
-            font-size: $font-size-3xl;
+            font-size: $font-size-5xl;
         }
     }
 
@@ -596,23 +736,23 @@
     }
 
     .services-card .eyebrow {
-        font-size: $font-size-md;
+        font-size: $font-size-xl; // 22px on small mobile too
     }
 
     .feature-eyebrow {
-        font-size: $font-size-md;
+        font-size: $font-size-xl; // 22px on small mobile too
     }
 
     .projects-left h2 {
-        font-size: $font-size-3xl;
+        font-size: 34px; // 34px on small mobile too
     }
 
     .nav {
-        padding: $spacing-md $spacing-sm;
+        padding: $spacing-md $spacing-2xl;
     }
 
     .hero-content {
-        padding: 0 $spacing-sm;
+        padding: 0 $spacing-2xl;
     }
 }
 

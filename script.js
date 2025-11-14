@@ -77,6 +77,85 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Move "What we offer" button after Planning on mobile
+document.addEventListener('DOMContentLoaded', function() {
+    function moveButtonOnMobile() {
+        const linkButton = document.querySelector('.services-card .link-button');
+        const planningItem = document.querySelector('.service-item:last-child'); // Planning is last
+        const servicesSection = document.querySelector('.services');
+        const serviceList = document.querySelector('.service-list');
+        
+        if (!linkButton || !planningItem || !servicesSection) return;
+        
+        // Check if mobile (window width <= 768px)
+        if (window.innerWidth <= 768) {
+            // Check if button hasn't been moved yet
+            if (!linkButton.classList.contains('link-button-mobile')) {
+                linkButton.classList.add('link-button-mobile');
+                linkButton.classList.remove('link-button-offset');
+                // Move button after Planning item (but outside service-list, as a sibling)
+                if (serviceList && serviceList.nextSibling) {
+                    serviceList.parentNode.insertBefore(linkButton, serviceList.nextSibling);
+                } else if (serviceList) {
+                    serviceList.parentNode.appendChild(linkButton);
+                }
+            }
+        } else {
+            // Desktop: move back to original position
+            if (linkButton.classList.contains('link-button-mobile')) {
+                linkButton.classList.remove('link-button-mobile');
+                linkButton.classList.add('link-button-offset');
+                const servicesCard = document.querySelector('.services-card');
+                if (servicesCard) {
+                    servicesCard.appendChild(linkButton);
+                }
+            }
+        }
+    }
+    
+    // Run on load and resize
+    moveButtonOnMobile();
+    window.addEventListener('resize', moveButtonOnMobile);
+});
+
+// Move "View all projects" button after project list on mobile
+document.addEventListener('DOMContentLoaded', function() {
+    function moveProjectsButtonOnMobile() {
+        const projectsButton = document.querySelector('.projects-left .projects-button');
+        const projectList = document.querySelector('.project-list');
+        const projectsSection = document.querySelector('.projects');
+        
+        if (!projectsButton || !projectList || !projectsSection) return;
+        
+        // Check if mobile (window width <= 768px)
+        if (window.innerWidth <= 768) {
+            // Check if button hasn't been moved yet
+            if (!projectsButton.classList.contains('projects-button-mobile')) {
+                projectsButton.classList.add('projects-button-mobile');
+                // Move button after project list
+                if (projectList && projectList.nextSibling) {
+                    projectList.parentNode.insertBefore(projectsButton, projectList.nextSibling);
+                } else if (projectList) {
+                    projectList.parentNode.appendChild(projectsButton);
+                }
+            }
+        } else {
+            // Desktop: move back to original position
+            if (projectsButton.classList.contains('projects-button-mobile')) {
+                projectsButton.classList.remove('projects-button-mobile');
+                const projectsLeft = document.querySelector('.projects-left');
+                if (projectsLeft) {
+                    projectsLeft.appendChild(projectsButton);
+                }
+            }
+        }
+    }
+    
+    // Run on load and resize
+    moveProjectsButtonOnMobile();
+    window.addEventListener('resize', moveProjectsButtonOnMobile);
+});
+
 // Mobile menu toggle
 document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('.menu-toggle');

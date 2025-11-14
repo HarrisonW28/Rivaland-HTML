@@ -97,5 +97,15 @@
 
 .arrow {
     margin-left: $spacing-xs;
+    display: inline-flex;
+    align-items: center;
+    width: 19px;
+    height: 16px;
+    flex-shrink: 0;
+    
+    svg {
+        width: 100%;
+        height: 100%;
+    }
 }
 

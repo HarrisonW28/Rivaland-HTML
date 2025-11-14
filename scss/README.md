@@ -52,11 +52,13 @@ npm install
 # Compile once
 npm run sass
 
-# Watch mode (auto-compile on changes)
+# Watch mode (auto-compile on changes) - RECOMMENDED for development
+npm run dev
+# or
 npm run sass:watch
 
-# Production build (compressed)
-npm run sass:compressed
+# Production build (compressed, no source maps)
+npm run build
 ```
 
 ### Using Sass directly:
@@ -71,6 +73,13 @@ sass --watch scss/style.scss:style.css
 # Compressed for production
 sass scss/style.scss style.css --style compressed
 ```
+
+## Best Practices
+
+- ✅ **Only edit SCSS files** - Never edit `style.css` directly (it gets overwritten)
+- ✅ **Use watch mode during development** - Run `npm run dev` to auto-compile on save
+- ✅ **Compiled CSS is gitignored** - Only source SCSS files are tracked in git
+- ✅ **Compile before committing** - Run `npm run build` before deploying
 
 ## Benefits
 

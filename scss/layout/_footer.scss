@@ -20,12 +20,13 @@
 
 .footer-top {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr; // Reduced contact column to sit more centrally
     gap: $spacing-3xl;
     margin-bottom: $spacing-3xl;
     padding: 0 $spacing-5xl;
     position: relative;
     z-index: 1;
+    justify-items: start; // Left-align all grid items (including footer-links)
 }
 
 .footer-contact,
@@ -44,13 +45,20 @@
 .footer-links {
     display: flex;
     flex-direction: column;
-    gap: $spacing-xs;
+    gap: 0; // Remove gap so links sit on lines
+    text-align: left; // Left-align privacy/terms links
+    margin-left: $spacing-2xl; // Push links further to the right on desktop
+    justify-self: start; // Ensure it respects the margin
 
     a {
         color: $color-white;
         text-decoration: none;
         font-size: $font-size-md;
         transition: opacity $transition-fast;
+        line-height: 1.6; // Match body line-height (same as address/contact)
+        min-height: auto; // Override touch-target min-height
+        min-width: auto; // Override touch-target min-width
+        display: inline; // Override touch-target display: inline-flex
 
         &:hover {
             opacity: 0.7;

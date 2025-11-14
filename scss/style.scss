@@ -1,8 +1,35 @@
 // ============================================
-// MAIN STYLESHEET
+// MAIN STYLESHEET - NAVIGATION GUIDE
 // ============================================
 // This file imports all partials in the correct order
 // Following the 7-1 pattern adapted for this project
+//
+// QUICK NAVIGATION:
+// ──────────────────────────────────────────────────────────────
+// 📁 ABSTRACT STYLES (Variables, Mixins)
+//    → scss/abstracts/_variables.scss  - Colors, spacing, typography
+//    → scss/abstracts/_mixins.scss      - Reusable mixins (buttons, etc.)
+//
+// 📁 BASE STYLES (Resets, Global)
+//    → scss/base/_base.scss             - Global resets, body, images
+//
+// 📁 LAYOUT STYLES (Major Sections)
+//    → scss/layout/_hero.scss           - Hero section with background
+//    → scss/layout/_navigation.scss     - Navbar and menu
+//    → scss/layout/_footer.scss         - Footer section
+//
+// 📁 COMPONENT STYLES (Reusable UI)
+//    → scss/components/_intro.scss      - Intro text section
+//    → scss/components/_services.scss   - Services accordion
+//    → scss/components/_feature.scss    - Feature image/text section
+//    → scss/components/_projects.scss   - Projects list
+//    → scss/components/_news.scss       - News cards
+//
+// 📁 RESPONSIVE STYLES (Media Queries)
+//    → scss/_responsive.scss            - All mobile/tablet breakpoints
+//
+// IMPORTANT: Edit SCSS files, NOT style.css (it's auto-generated)
+// ──────────────────────────────────────────────────────────────
 
 // 1. Abstracts (variables and mixins - must come first)
 @import 'abstracts/variables';
