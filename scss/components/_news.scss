@@ -1,0 +1,75 @@
+// ============================================
+// NEWS SECTION
+// ============================================
+
+.news {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-md;
+    padding: $spacing-5xl;
+    border-top: 1px solid $color-border;
+}
+
+.news-card {
+    border: 1px solid $color-border-light;
+    background: $color-white;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all $transition-base;
+    overflow: hidden;
+    width: 630px;
+    height: 630px;
+    position: relative;
+
+    &:hover {
+        background: $color-primary;
+        transform: translateY(-4px);
+
+        .news-eyebrow,
+        .news-title,
+        .news-arrow {
+            color: $color-white;
+        }
+    }
+
+    img {
+        width: 590px;
+        height: 400px;
+        object-fit: cover;
+        display: block;
+        margin: 10px auto;
+    }
+}
+
+.news-content {
+    padding: $spacing-lg $spacing-xl;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+    flex: 1;
+}
+
+.news-eyebrow {
+    font-size: $font-size-xs;
+    color: $color-accent-teal;
+    margin: 0;
+    font-weight: $font-weight-normal;
+}
+
+.news-title {
+    font-size: $font-size-3xl;
+    color: $color-primary-light;
+    margin: 0;
+    font-weight: $font-weight-normal;
+}
+
+.news-arrow {
+    position: absolute;
+    bottom: $spacing-md;
+    right: $spacing-md;
+    font-size: $font-size-xl;
+    color: $color-text-secondary;
+    transition: color $transition-base;
+}
+

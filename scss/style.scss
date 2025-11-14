@@ -1,0 +1,27 @@
+// ============================================
+// MAIN STYLESHEET
+// ============================================
+// This file imports all partials in the correct order
+// Following the 7-1 pattern adapted for this project
+
+// 1. Abstracts (variables and mixins - must come first)
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+// 2. Base styles
+@import 'base/base';
+
+// 3. Layout (major structural components)
+@import 'layout/hero';
+@import 'layout/navigation';
+@import 'layout/footer';
+
+// 4. Components (reusable UI components)
+@import 'components/intro';
+@import 'components/services';
+@import 'components/feature';
+@import 'components/projects';
+@import 'components/news';
+
+// 5. Responsive styles (must come last to override defaults)
+@import 'responsive';

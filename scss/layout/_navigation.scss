@@ -1,0 +1,101 @@
+// ============================================
+// NAVIGATION
+// ============================================
+
+.nav {
+    width: 100%;
+    padding: 68px $spacing-5xl;
+    position: relative;
+    z-index: $z-nav;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    color: $color-white;
+    font-size: $font-size-xl;
+    letter-spacing: 3px;
+    font-weight: $font-weight-semibold;
+
+    img {
+        height: $spacing-lg;
+        width: auto;
+    }
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: $spacing-xs;
+    z-index: $z-menu-toggle;
+
+    span {
+        width: 25px;
+        height: 2px;
+        background: $color-white;
+        transition: all $transition-base;
+        display: block;
+    }
+
+    &.active {
+        span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        span:nth-child(2) {
+            opacity: 0;
+        }
+
+        span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+    }
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: $spacing-3xl;
+
+    .mobile-logo,
+    .mobile-divider,
+    .mobile-contact {
+        display: none;
+    }
+
+    a {
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+        font-size: $font-size-sm;
+        transition: $transition-fast;
+
+        &:hover {
+            color: $color-white;
+        }
+    }
+}
+
+.contact-btn {
+    padding: 10px $spacing-xl;
+    border: 1px solid $color-white;
+    color: $color-white;
+    text-decoration: none;
+    font-size: $font-size-sm;
+    border-radius: 2px;
+    transition: $transition-base;
+
+    &:hover {
+        background: $color-white;
+        color: #00263d;
+    }
+}
+
+.arrow {
+    margin-left: $spacing-xs;
+}
+

@@ -1,0 +1,199 @@
+// ============================================
+// SERVICES SECTION
+// ============================================
+
+.services {
+    display: grid;
+    grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr);
+    gap: 0;
+    background: $color-white;
+    position: relative;
+    border-top: 1px solid $color-border;
+
+    &.has-active-accordion {
+        .services-card {
+            justify-content: space-between;
+        }
+    }
+}
+
+.services-card {
+    background: transparent;
+    padding: $spacing-3xl;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: $spacing-3xl;
+    border: 1px solid $color-border;
+    padding-right: $spacing-4xl;
+    min-height: 200px;
+    transition: justify-content $transition-accordion;
+
+    .eyebrow {
+        text-transform: none;
+        font-size: $font-size-2xl;
+        color: $color-primary;
+        line-height: 1.5;
+        font-weight: $font-weight-normal;
+    }
+
+    .link-button {
+        color: $color-black;
+        text-decoration: none;
+        font-family: Roboto;
+        font-weight: $font-weight-light;
+        font-size: $font-size-md;
+        line-height: 38px;
+        letter-spacing: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid $color-accent-teal-light;
+        background: $color-white;
+        padding: 12px $spacing-md;
+        transition: color $transition-base;
+        width: 300px;
+        @include button-hover-effect;
+    }
+}
+
+.eyebrow {
+    text-transform: none;
+    font-size: $font-size-2xl;
+    color: $color-primary;
+    max-width: 340px;
+    padding-left: $spacing-3xl;
+}
+
+.button-arrow {
+    width: 19px;
+    height: $spacing-sm;
+    flex-shrink: 0;
+    transition: filter $transition-base;
+}
+
+.link-button-offset {
+    margin-left: $spacing-3xl;
+}
+
+.service-list {
+    background: transparent;
+    border-top: 1px solid $color-border;
+    border-right: 1px solid $color-border;
+    border-bottom: 1px solid $color-border;
+}
+
+.service-item {
+    background: transparent;
+    border-bottom: 1px solid $color-border;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &.active {
+        .service-header {
+            background: $color-primary;
+
+            p {
+                color: $color-white;
+            }
+        }
+
+        .accordion-toggle {
+            color: $color-white;
+        }
+
+        .service-content {
+            max-height: 500px;
+            padding: $spacing-lg $spacing-2xl $spacing-lg;
+        }
+    }
+
+    .service-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: $spacing-lg $spacing-2xl;
+        cursor: pointer;
+        transition: background $transition-accordion;
+
+        p {
+            color: $color-primary;
+            font-size: $font-size-xl;
+            font-weight: $font-weight-light;
+            margin: 0;
+            transition: color $transition-base;
+        }
+
+        &:hover {
+            background: $color-primary;
+
+            p {
+                color: $color-white;
+            }
+
+            .accordion-toggle {
+                color: $color-white;
+            }
+        }
+    }
+}
+
+.accordion-toggle {
+    background: none;
+    border: none;
+    font-size: $font-size-2xl;
+    color: $color-primary;
+    cursor: pointer;
+    padding: 10px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color $transition-base;
+    line-height: 1;
+
+    &:hover {
+        color: $color-white;
+    }
+}
+
+.service-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height $transition-accordion, padding $transition-accordion;
+    padding: 0 $spacing-2xl;
+
+    p {
+        color: $color-accent-teal;
+        font-size: $font-size-base;
+        line-height: 1.6;
+        margin: 0 0 $spacing-lg 0;
+        font-weight: $font-weight-normal;
+    }
+}
+
+.service-button {
+    color: $color-black;
+    text-decoration: none;
+    font-family: Roboto;
+    font-weight: $font-weight-light;
+    font-size: $font-size-md;
+    line-height: 38px;
+    letter-spacing: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid $color-accent-teal-light;
+    background: $color-white;
+    padding: 12px $spacing-md;
+    transition: color $transition-base;
+    max-width: 305px;
+    box-sizing: border-box;
+    @include button-hover-effect;
+}
+

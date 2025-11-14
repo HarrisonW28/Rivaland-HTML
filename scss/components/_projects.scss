@@ -1,0 +1,116 @@
+// ============================================
+// PROJECTS SECTION
+// ============================================
+
+.projects {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 0;
+    padding: 0;
+    background: $color-white;
+    border-top: 1px solid $color-border;
+    align-items: stretch;
+}
+
+.projects-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: $spacing-5xl;
+
+    h2 {
+        font-size: $font-size-8xl;
+        font-weight: $font-weight-normal;
+        color: $color-primary-light;
+        margin: 0;
+    }
+}
+
+.projects-button {
+    color: $color-black;
+    text-decoration: none;
+    font-family: Roboto;
+    font-weight: $font-weight-light;
+    font-size: $font-size-md;
+    line-height: 38px;
+    letter-spacing: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid $color-accent-teal-light;
+    background: $color-white;
+    padding: 12px $spacing-md;
+    transition: color $transition-base;
+    width: 100%;
+    box-sizing: border-box;
+    @include button-hover-effect;
+}
+
+.project-list {
+    border: 1px solid $color-border-light;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 50px;
+    padding-left: $spacing-6xl;
+    border-bottom: 1px solid $color-border-light;
+    align-items: center;
+    gap: $spacing-md;
+    transition: background $transition-base;
+    cursor: pointer;
+
+    &:hover {
+        background: $color-primary;
+
+        .project-meta,
+        .project-location,
+        .arrow-link {
+            color: $color-white;
+        }
+    }
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.project-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.project-meta {
+    color: $color-text-secondary;
+    font-size: $font-size-md;
+    font-weight: $font-weight-normal;
+    margin: 0;
+}
+
+.project-status {
+    color: $color-accent-teal;
+}
+
+.project-location {
+    font-size: $font-size-3xl;
+    color: $color-primary-light;
+    margin: 0;
+    font-weight: $font-weight-normal;
+}
+
+.arrow-link {
+    font-size: $font-size-7xl;
+    color: $color-text-secondary;
+    width: $font-size-7xl;
+    height: $font-size-7xl;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+

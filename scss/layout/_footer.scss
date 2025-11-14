@@ -1,0 +1,110 @@
+// ============================================
+// FOOTER
+// ============================================
+
+.site-footer {
+    background: $color-primary-footer;
+    color: $color-white;
+    padding-top: $spacing-4xl;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: $z-base;
+    }
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: $spacing-3xl;
+    margin-bottom: $spacing-3xl;
+    padding: 0 $spacing-5xl;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-contact,
+.footer-address {
+    p {
+        margin: 0 0 $spacing-xs 0;
+        color: $color-white;
+        font-size: $font-size-md;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+
+    a {
+        color: $color-white;
+        text-decoration: none;
+        font-size: $font-size-md;
+        transition: opacity $transition-fast;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}
+
+.footer-divider {
+    height: 1px;
+    background: $color-accent-teal;
+    margin: $spacing-3xl 0;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-bottom {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: $spacing-3xl;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0;
+    padding: 0 $spacing-5xl;
+}
+
+.footer-copyright {
+    white-space: nowrap;
+}
+
+.footer-copyright,
+.footer-credit {
+    p {
+        margin: 0;
+        color: $color-accent-teal-light;
+        font-size: $font-size-base;
+    }
+}
+
+.footer-logo {
+    margin-top: $spacing-5xl;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: $z-base;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        display: block;
+        opacity: 0.4;
+    }
+}
+

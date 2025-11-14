@@ -1,0 +1,618 @@
+// ============================================
+// RESPONSIVE STYLES
+// ============================================
+
+// Tablet (768px - 1024px)
+@media (max-width: $breakpoint-desktop) {
+    .nav {
+        padding: $spacing-3xl $spacing-3xl;
+    }
+
+    .hero {
+        &::before {
+            top: $spacing-md;
+            right: $spacing-md;
+            bottom: $spacing-md;
+            left: $spacing-md;
+        }
+    }
+
+    .hero-content {
+        padding: 0 $spacing-3xl;
+        margin: auto 0;
+
+        h1 {
+            font-size: $font-size-6xl;
+        }
+    }
+
+    .intro {
+        max-width: 85vw;
+        padding: $spacing-4xl $spacing-3xl;
+        font-size: $font-size-2xl;
+    }
+
+    .services {
+        grid-template-columns: 1fr;
+    }
+
+    .feature {
+        grid-template-columns: 1fr;
+
+        &-image {
+            padding: $spacing-4xl $spacing-3xl;
+        }
+
+        &-copy {
+            padding: $spacing-4xl $spacing-3xl;
+        }
+    }
+
+    .projects {
+        grid-template-columns: 1fr;
+
+        &-left {
+            padding: $spacing-4xl $spacing-3xl;
+        }
+    }
+
+    .news {
+        grid-template-columns: 1fr;
+        padding: $spacing-4xl $spacing-3xl;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    .footer-bottom {
+        grid-template-columns: 1fr 1fr;
+
+        > div:empty {
+            display: none;
+        }
+    }
+}
+
+// Mobile Landscape / Tablet (768px - 1024px)
+@media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
+    .nav {
+        padding: $spacing-3xl $spacing-4xl;
+    }
+
+    .hero {
+        &::before {
+            top: $spacing-md;
+            right: $spacing-md;
+            bottom: $spacing-md;
+            left: $spacing-md;
+        }
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    .nav-links {
+        display: flex !important;
+        position: static;
+        background: transparent;
+        flex-direction: row;
+        padding: 0;
+        gap: 30px;
+        height: auto;
+        width: auto;
+        overflow: visible;
+        top: auto;
+        transition: none;
+
+        > li:not(.mobile-contact):not(.mobile-divider):not(.mobile-logo) {
+            border-bottom: none;
+        }
+
+        a {
+            font-size: $font-size-sm;
+            padding: 0;
+            color: rgba(255, 255, 255, 0.85);
+        }
+    }
+
+    .mobile-divider,
+    .mobile-contact,
+    .mobile-logo {
+        display: none;
+    }
+
+    .contact-btn {
+        display: block;
+        padding: 10px $spacing-xl;
+        font-size: $font-size-sm;
+    }
+
+    .hero-content {
+        padding: 0 $spacing-4xl;
+        margin: auto 0;
+
+        h1 {
+            font-size: $font-size-6xl;
+        }
+    }
+
+    .intro {
+        max-width: 80vw;
+        padding: $spacing-4xl $spacing-4xl;
+        font-size: $font-size-xl;
+    }
+
+    .services {
+        grid-template-columns: 1fr 1fr;
+        padding: $spacing-4xl 0;
+    }
+
+    .feature {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .projects {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .news {
+        grid-template-columns: 1fr 1fr;
+        padding: $spacing-4xl $spacing-4xl;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 0 $spacing-4xl;
+    }
+
+    .footer-bottom {
+        grid-template-columns: 2fr 1fr 1fr;
+        padding: 0 $spacing-4xl;
+
+        > div:empty {
+            display: block;
+        }
+    }
+}
+
+// Mobile Landscape Orientation
+@media (max-width: $breakpoint-desktop) and (orientation: landscape) {
+    .menu-toggle {
+        display: none;
+    }
+
+    .nav-links {
+        display: flex !important;
+        position: static;
+        background: transparent;
+        flex-direction: row;
+        padding: 0;
+        gap: 30px;
+        height: auto;
+        width: auto;
+        overflow: visible;
+        top: auto;
+        transition: none;
+
+        > li:not(.mobile-contact):not(.mobile-divider):not(.mobile-logo) {
+            border-bottom: none;
+        }
+
+        a {
+            font-size: $font-size-sm;
+            padding: 0;
+            color: rgba(255, 255, 255, 0.85);
+        }
+    }
+
+    .mobile-divider,
+    .mobile-contact,
+    .mobile-logo {
+        display: none;
+    }
+
+    .contact-btn {
+        display: block;
+        padding: 10px $spacing-xl;
+        font-size: $font-size-sm;
+    }
+}
+
+// Mobile (up to 768px)
+@media (max-width: $breakpoint-tablet) {
+    .nav {
+        padding: $spacing-lg $spacing-md;
+
+        &.menu-open {
+            position: relative;
+            z-index: $z-menu-open;
+
+            .nav-links {
+                top: 0;
+            }
+        }
+    }
+
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    .menu-toggle {
+        display: flex;
+        order: 2;
+        position: relative;
+        z-index: $z-menu-toggle-active;
+    }
+
+    .contact-btn {
+        display: none;
+    }
+
+    .nav-links {
+        display: flex;
+        position: fixed;
+        top: -100%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: $color-primary-footer;
+        flex-direction: column;
+        padding: $spacing-5xl $spacing-md 0;
+        gap: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: $z-menu;
+        overflow-y: auto;
+        transition: top $transition-slow;
+        padding-bottom: 0;
+
+        > li:not(.mobile-contact):not(.mobile-divider):not(.mobile-logo) {
+            border-bottom: none;
+        }
+
+        a {
+            font-size: $font-size-5xl;
+            padding: $spacing-xs 0;
+            display: block;
+            color: $color-white;
+            text-decoration: none;
+        }
+
+        .mobile-logo,
+        .mobile-divider,
+        .mobile-contact {
+            display: none;
+        }
+    }
+
+    .mobile-divider {
+        height: 1px;
+        background: $color-border-mobile;
+        margin: 0;
+        padding: 0;
+        margin-top: auto;
+        margin-bottom: 0;
+        width: 100vw;
+        margin-left: -$spacing-md;
+        position: relative;
+    }
+
+    .mobile-contact {
+        padding: $spacing-md $spacing-md;
+        position: relative;
+        z-index: 1;
+        margin-bottom: 50px;
+    }
+
+    .contact-btn-mobile {
+        font-size: $font-size-2xl;
+        color: $color-white;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: $spacing-xs;
+
+        .button-arrow {
+            width: $spacing-lg;
+            height: $spacing-lg;
+            flex-shrink: 0;
+            display: inline-block;
+            filter: brightness(0) invert(1);
+            vertical-align: middle;
+        }
+    }
+
+    @media (max-width: $breakpoint-tablet) {
+        .nav-links {
+            .mobile-logo {
+                display: block;
+                padding: $spacing-md;
+                margin: 0;
+                width: 100%;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin-bottom: 0;
+                z-index: $z-base;
+            }
+        }
+
+        .mobile-logo-img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            opacity: 0.4;
+            display: block;
+            padding: 0;
+        }
+    }
+
+    .logo {
+        order: 1;
+        position: relative;
+        z-index: $z-menu-toggle-active;
+
+        img {
+            height: $spacing-md;
+        }
+    }
+
+    .hero {
+        height: 100vh;
+        min-height: 600px;
+
+        &::before {
+            top: $spacing-md;
+            right: $spacing-md;
+            bottom: $spacing-md;
+            left: $spacing-md;
+        }
+    }
+
+    .hero-content {
+        padding: 0 $spacing-3xl;
+        margin: auto 0;
+
+        h1 {
+            font-size: $font-size-4xl;
+            line-height: 1.2;
+        }
+    }
+
+    .intro {
+        max-width: 100%;
+        margin: $spacing-3xl auto $spacing-md;
+        padding: $spacing-3xl $spacing-md;
+        font-size: $font-size-md;
+        line-height: 1.6;
+    }
+
+    .services {
+        padding: $spacing-3xl 0;
+        grid-template-columns: 1fr;
+
+        &-card {
+            padding: $spacing-3xl $spacing-md;
+
+            .eyebrow {
+                font-size: $font-size-lg;
+                margin-bottom: $spacing-lg;
+            }
+
+            .link-button {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    }
+
+    .service-list {
+        border-left: none;
+        border-right: none;
+    }
+
+    .service-header {
+        padding: $spacing-md;
+
+        p {
+            font-size: $font-size-md;
+        }
+    }
+
+    .service-content {
+        padding: 0 $spacing-md;
+    }
+
+    .service-item.active .service-content {
+        padding: $spacing-md;
+    }
+
+    .service-button {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .feature {
+        grid-template-columns: 1fr;
+
+        &-image {
+            padding: $spacing-3xl $spacing-md;
+
+            img {
+                max-width: 100%;
+            }
+        }
+
+        &-copy {
+            padding: $spacing-3xl $spacing-md;
+
+            p {
+                font-size: $font-size-base;
+                max-width: 100%;
+            }
+
+            .link-button {
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+
+        &-eyebrow {
+            font-size: $font-size-lg;
+            margin-bottom: $spacing-sm;
+        }
+    }
+
+    .projects {
+        grid-template-columns: 1fr;
+
+        &-left {
+            padding: $spacing-3xl $spacing-md;
+
+            h2 {
+                font-size: $font-size-5xl;
+                margin-bottom: $spacing-lg;
+            }
+        }
+    }
+
+    .projects-button {
+        width: 100%;
+    }
+
+    .project-list {
+        border: none;
+        border-top: 1px solid $color-border;
+    }
+
+    .project-item {
+        padding: $spacing-md;
+    }
+
+    .project-breadcrumb {
+        font-size: $font-size-base;
+    }
+
+    .project-name {
+        font-size: $font-size-xl;
+    }
+
+    .arrow-link {
+        font-size: $font-size-4xl;
+    }
+
+    .news {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: $spacing-3xl $spacing-md;
+        gap: $spacing-md;
+    }
+
+    .news-card {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: auto;
+
+        img {
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: cover;
+        }
+    }
+
+    .news-content {
+        padding: $spacing-lg $spacing-md;
+    }
+
+    .news-eyebrow {
+        font-size: $font-size-xs;
+    }
+
+    .news-title {
+        font-size: $font-size-lg;
+    }
+
+    .site-footer {
+        padding-top: $spacing-3xl;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0 $spacing-md;
+    }
+
+    .footer-divider {
+        margin: 30px $spacing-md;
+    }
+
+    .footer-bottom {
+        grid-template-columns: 1fr;
+        gap: $spacing-md;
+        padding: 0 $spacing-md;
+
+        > div:empty {
+            display: none;
+        }
+    }
+
+    .footer-copyright {
+        white-space: normal;
+
+        p,
+        .footer-credit p {
+            font-size: $font-size-xs;
+        }
+    }
+
+    .footer-logo {
+        margin-top: $spacing-3xl;
+        padding: 0 $spacing-md;
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+// Small Mobile (up to 480px)
+@media (max-width: $breakpoint-mobile) {
+    .hero-content {
+        h1 {
+            font-size: $font-size-3xl;
+        }
+    }
+
+    .intro {
+        font-size: $font-size-base;
+        padding: 30px $spacing-md;
+    }
+
+    .services-card .eyebrow {
+        font-size: $font-size-md;
+    }
+
+    .feature-eyebrow {
+        font-size: $font-size-md;
+    }
+
+    .projects-left h2 {
+        font-size: $font-size-3xl;
+    }
+
+    .nav {
+        padding: $spacing-md $spacing-sm;
+    }
+
+    .hero-content {
+        padding: 0 $spacing-sm;
+    }
+}
+

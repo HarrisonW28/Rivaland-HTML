@@ -1,0 +1,73 @@
+// ============================================
+// VARIABLES
+// ============================================
+
+// Colors
+$color-white: #fff;
+$color-black: #000;
+$color-primary: #202A44;
+$color-primary-dark: #001428;
+$color-primary-light: #1a2b3c;
+$color-primary-footer: #1f2d47;
+$color-accent: #55c5e9;
+$color-accent-teal: #02635E;
+$color-accent-teal-light: #9CB7B2;
+$color-text: #102132;
+$color-text-secondary: #7a8796;
+$color-border: #d0d0d0;
+$color-border-light: #e0e5eb;
+$color-border-mobile: #a8b8c8;
+
+// Spacing
+$spacing-xs: 8px;
+$spacing-sm: 16px;
+$spacing-md: 20px;
+$spacing-lg: 24px;
+$spacing-xl: 28px;
+$spacing-2xl: 32px;
+$spacing-3xl: 40px;
+$spacing-4xl: 60px;
+$spacing-5xl: 80px;
+$spacing-6xl: 100px;
+
+// Typography
+$font-family: "Roboto", sans-serif;
+$font-size-xs: 14px;
+$font-size-sm: 15px;
+$font-size-base: 16px;
+$font-size-md: 18px;
+$font-size-lg: 20px;
+$font-size-xl: 22px;
+$font-size-2xl: 24px;
+$font-size-3xl: 28px;
+$font-size-4xl: 32px;
+$font-size-5xl: 36px;
+$font-size-6xl: 42px;
+$font-size-7xl: 48px;
+$font-size-8xl: 56px;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Breakpoints
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+
+// Transitions
+$transition-fast: 0.2s;
+$transition-base: 0.3s ease;
+$transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-accordion: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+// Z-index
+$z-base: 0;
+$z-nav: 2;
+$z-menu-toggle: 10;
+$z-menu: 1000;
+$z-menu-open: 1001;
+$z-menu-toggle-active: 1002;
+
