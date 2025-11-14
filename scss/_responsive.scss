@@ -367,7 +367,7 @@
     @media (max-width: $breakpoint-tablet) {
         .nav-links {
             .mobile-logo {
-                display: block;
+                display: none; // Hidden by default
                 padding: $spacing-md;
                 margin: 0;
                 width: 100%;
@@ -378,6 +378,11 @@
                 margin-bottom: 0;
                 z-index: $z-base;
             }
+        }
+        
+        // Show mobile-logo only when menu is open
+        .nav.menu-open .nav-links .mobile-logo {
+            display: block;
         }
 
         .mobile-logo-img {
