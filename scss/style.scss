@@ -42,6 +42,7 @@
 @import 'layout/hero';
 @import 'layout/navigation';
 @import 'layout/footer';
+@import 'layout/about';
 
 // 4. Components (reusable UI components)
 @import 'components/intro';
@@ -49,6 +50,7 @@
 @import 'components/feature';
 @import 'components/projects';
 @import 'components/news';
+@import 'components/approach';
 
 // 5. Responsive styles (must come last to override defaults)
 @import 'responsive';

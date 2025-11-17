@@ -24,7 +24,10 @@
     flex-direction: column;
     justify-content: center;
     gap: $spacing-3xl;
-    border: 1px solid $color-border;
+    border-top: 1px solid $color-border;
+    border-right: 1px solid $color-border;
+    border-bottom: 1px solid $color-border;
+    // Removed left border
     padding-right: $spacing-4xl;
     min-height: 200px;
     transition: justify-content $transition-accordion;
@@ -79,8 +82,8 @@
 .service-list {
     background: transparent;
     border-top: 1px solid $color-border;
-    border-right: 1px solid $color-border;
     border-bottom: 1px solid $color-border;
+    // Removed left and right borders
 }
 
 .service-item {

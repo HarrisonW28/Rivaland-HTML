@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Rivaland</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="hero hero-dark">
+    <nav class="nav">
+        <div class="logo"><a href="index.html"><img src="assets/svg/logo.svg" alt="logo"></a></div>
+
+        <button class="menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links">
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="news.html">News</a></li>
+            <li class="mobile-divider"></li>
+            <li class="mobile-contact">
+                <a href="contact.html" class="contact-btn-mobile">
+                    <span class="contact-text">Contact us</span>
+                    <span class="contact-arrow">
+                        <img src="assets/svg/arrow.svg" alt="arrow" class="button-arrow">
+                    </span>
+                </a>
+            </li>
+            <li class="mobile-logo">
+                <img src="assets/svg/logo.svg" alt="RIVALAND" class="mobile-logo-img">
+            </li>
+        </ul>
+
+        <a href="contact.html" class="contact-btn">
+            Contact us <svg class="arrow" width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 0.5L18.5 8M18.5 8L11 15.5M18.5 8H0.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+    </nav>
+
+    <div class="hero-content">
+        <h1>
+            A best in class offering with a proven pedigree of <span class="highlight">success</span>
+        </h1>
+    </div>
+</header>
+
+<main>
+    <section class="intro">
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper interdum lacinia. Vestibulum pretium ante ut ligula fermentum rhoncus eget id neque. Pellentesque sit amet est a lectus convallis maximus in et felis. 
+        </p>
+    </section>
+
+    <!-- Values Section - Reusing services component -->
+    <section class="services">
+        <div class="services-card">
+            <p class="eyebrow">The values that underpin our organisation</p>
+        </div>
+        <div class="service-list">
+            <article class="service-item">
+                <div class="service-header">
+                    <p>Honesty</p>
+                    <button class="accordion-toggle" aria-label="expand honesty">+</button>
+                </div>
+                <div class="service-content">
+                    <p>We believe in transparent communication and honest dealings with all our partners, clients, and stakeholders. Integrity is at the core of everything we do.</p>
+                </div>
+            </article>
+            <article class="service-item">
+                <div class="service-header">
+                    <p>Excellence</p>
+                    <button class="accordion-toggle" aria-label="expand excellence">+</button>
+                </div>
+                <div class="service-content">
+                    <p>We strive for excellence in every aspect of our work, from initial site assessment through to securing planning consent and beyond.</p>
+                </div>
+            </article>
+            <article class="service-item">
+                <div class="service-header">
+                    <p>Endeavour</p>
+                    <button class="accordion-toggle" aria-label="expand endeavour">+</button>
+                </div>
+                <div class="service-content">
+                    <p>We are committed to going the extra mile, working diligently to overcome challenges and deliver successful outcomes for every project.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Team Member Section - Reusing feature component -->
+    <section class="feature team-feature">
+        <div class="feature-image">
+            <img src="assets/images/headshot.png" alt="Andy Wilkins">
+        </div>
+        <div class="feature-copy">
+            <h2 class="team-heading">Led by Andy Wilkins</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper interdum lacinia. Vestibulum pretium ante ut ligula fermentum rhoncus eget id neque. Pellentesque sit amet est a lectus convallis maximus in et felis. Suspendisse potenti. Donec id erat eget nulla dapibus bibendum. Cras feugiat condimentum enim dignissim varius. Integer tincidunt condimentum odio et tristique.
+            </p>
+            <a class="link-button team-button" href="#">
+                Connect on LinkedIn <img src="assets/svg/arrow.svg" alt="arrow" class="button-arrow">
+            </a>
+        </div>
+    </section>
+
+    <!-- Our Approach Section - Grid layout with fixed left and scrollable right -->
+    <section class="approach-section">
+        <div class="approach-progress"></div>
+        <div class="approach-left">
+            <h2 class="approach-title">
+                <span>Our approach</span>
+            </h2>
+        </div>
+        <div class="approach-divider"></div>
+        <div class="approach-container">
+            <!-- Page 1 -->
+            <div class="approach-page">
+                <div class="approach-right">
+                    <h3 class="approach-heading">Practical</h3>
+                    <p class="approach-text">
+                        As soon as we have been selected as the preferred Promoter, we work quickly and positively to enhance the process, taking a practical and creative approach to secure a solution that offers real value.
+                    </p>
+                    <div class="approach-number">1</div>
+                    <div class="approach-icon-wrapper">
+                        <img src="assets/svg/gear.svg" alt="Gear icon" class="approach-icon">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Page 2 (for scrolling) -->
+            <div class="approach-page">
+                <div class="approach-right">
+                    <h3 class="approach-heading">Strategic</h3>
+                    <p class="approach-text">
+                        We develop comprehensive strategies that align with local planning policies and stakeholder interests, ensuring sustainable and viable outcomes for all parties involved.
+                    </p>
+                    <div class="approach-number">2</div>
+                    <div class="approach-icon-wrapper">
+                        <img src="assets/svg/lightbulb.svg" alt="Gear icon" class="approach-icon">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Arrows -->
+        <div class="approach-nav">
+            <button class="approach-prev" aria-label="Previous approach">
+                <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 15.5L0.5 8M0.5 8L8 0.5M0.5 8H18.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <button class="approach-next" aria-label="Next approach">
+                <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 0.5L18.5 8M18.5 8L11 15.5M18.5 8H0.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial-section">
+        <div class="testimonial-left">
+            <div class="testimonial-nav">
+                <button class="prev" aria-label="Previous testimonial">
+                    <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 15.5L0.5 8M0.5 8L8 0.5M0.5 8H18.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button class="next" aria-label="Next testimonial">
+                    <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 0.5L18.5 8M18.5 8L11 15.5M18.5 8H0.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="testimonial-divider"></div>
+        <div class="testimonial-right">
+            <div class="testimonial-item active">
+                <blockquote>
+                    "Unlike a lot of so called Land Promoters these guys really know their sh*t."
+                </blockquote>
+                <p class="testimonial-author">
+                    Mr A Customer / <span class="testimonial-company">Wellknown Developers</span>
+                </p>
+            </div>
+            <div class="testimonial-item">
+                <blockquote>
+                    "Rivaland delivered exceptional results on our development project. Their expertise and professionalism made all the difference."
+                </blockquote>
+                <p class="testimonial-author">
+                    Jane Smith / <span class="testimonial-company">Property Developers Ltd</span>
+                </p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-top">
+        <div class="footer-contact">
+            <p>Telephone: 01564 123456</p>
+            <p>Email: info@rivaland.co.uk</p>
+            <p>Connect on Linkedin</p>
+        </div>
+        <div class="footer-address">
+            <p>Beech House, Poolhead Lane,</p>
+            <p>Tanworth In Arden, B94 5ED</p>
+        </div>
+        <div class="footer-links">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+        </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+        <div class="footer-copyright">
+            <p>© Riva Land 2025. All rights reserved. Registered in England and Wales No: 09080608.</p>
+        </div>
+        <div></div>
+        <div class="footer-credit">
+            <p>Site by Brown + Cooper</p>
+        </div>
+    </div>
+    <div class="footer-logo">
+        <img src="assets/svg/logo.svg" alt="RIVALAND">
+    </div>
+</footer>
+
+<script src="js/accordion.js"></script>
+<script src="js/mobile-menu.js"></script>
+<script src="js/mobile-layout.js"></script>
+<script src="js/approach.js"></script>
+<script src="js/testimonials.js"></script>
+</body>
+</html>

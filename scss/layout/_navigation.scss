@@ -71,11 +71,27 @@
     a {
         color: rgba(255, 255, 255, 0.85);
         text-decoration: none;
-        font-size: $font-size-sm;
+        font-size: 18px;
+        line-height: 38px;
         transition: $transition-fast;
+        position: relative;
 
         &:hover {
             color: $color-white;
+        }
+
+        &.active {
+            color: #7DCAD8;
+            
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background-color: #7DCAD8;
+            }
         }
     }
 }

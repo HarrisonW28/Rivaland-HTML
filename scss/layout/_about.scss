@@ -1,0 +1,330 @@
+// ============================================
+// ABOUT PAGE LAYOUT
+// ============================================
+// Layout-specific styles for the about page
+// Reuses existing components (feature, services)
+
+// Dark Hero Variant - Diagonal split background
+.hero-dark {
+    height: 664px; // Fixed height on desktop
+    background: #202A44; // Dark blue
+    position: relative;
+    overflow: visible; // Allow triangle to extend above container
+    display: flex;
+    flex-direction: column;
+    
+    // Remove padding area around hero (override ::before from .hero)
+    &::before {
+        display: none;
+    }
+    
+    // Diagonal split with teal triangle - positioned to match image
+    // Triangle in bottom-right, extending diagonally up-left to fully consume contact button
+    &::after {
+        content: "";
+        position: absolute;
+        top: -500px;
+        bottom: 0;
+        right: 0;
+        left: 60%;
+        width: 40%;
+        height: calc(100% + 500px);
+        background: #02635E;
+        clip-path: polygon(0 100%, 100% 100%, 100% 0);
+        z-index: 0;
+    }
+    
+    .hero-content {
+        position: relative;
+        z-index: $z-nav;
+        max-width: 900px;
+        padding: 0 $spacing-5xl 0 $spacing-6xl; // More padding-left for dark mode
+        margin: auto 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+        h1 {
+            color: #fff;
+            font-size: 56px;
+            font-weight: 300;
+            line-height: 1.3;
+            padding-left: 75px;
+            position: relative;
+            z-index: 1;
+        }
+    }
+}
+
+// Intro Section - About page specific styles
+.intro {
+    max-width: none !important; // Override all responsive max-width constraints
+    width: 100% !important; // Full width
+    margin: 80px auto 40px;
+    padding: 80px; // Padding around the text area
+    font-size: 28px;
+    font-weight: 300;
+    color: #02635E;
+    display: flex;
+    justify-content: center; // Center the content
+    
+    // Desktop only - force 1059px width
+    @media (min-width: $breakpoint-desktop) {
+        p {
+            width: 1059px !important; // Force exact width on desktop
+            max-width: 1059px !important; // Force max-width
+            min-width: 1059px !important; // Prevent shrinking
+            margin: 0; // Remove default margins
+        }
+    }
+    
+    // Mobile/tablet - responsive width
+    @media (max-width: 1023px) {
+        p {
+            width: auto !important;
+            max-width: 100% !important;
+            margin: 0;
+        }
+    }
+}
+
+// Team Feature Section - Two column layout with headshot and white background
+.team-feature {
+    background: $color-white; // White background for entire section
+    border-top: 1px solid $color-border;
+    
+    .feature-image {
+        background: $color-white; // White background for image area
+        padding: $spacing-5xl; // Add padding to center the image
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        img {
+            max-width: 522px;
+            max-height: 522px;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; // Maintain aspect ratio
+            display: block;
+        }
+    }
+    
+    .feature-copy {
+        background: $color-white; // White background
+        padding: $spacing-5xl;
+        // Align content with right edge of services grid (service-list column)
+        // Services grid is 50/50, so we need to match the service-list padding
+        padding-left: $spacing-2xl; // Match service-list content padding ($spacing-2xl = 32px)
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+        .team-heading {
+            font-size: $font-size-4xl;
+            font-weight: $font-weight-normal;
+            color: $color-primary;
+            margin: 0 0 $spacing-lg 0;
+        }
+        
+        > p {
+            color: $color-text; // Dark text color
+            font-size: $font-size-base;
+            line-height: 26px; // Set line height to 26px
+            margin-bottom: $spacing-lg;
+            max-width: none; // Remove max-width constraint
+        }
+        
+        .team-button {
+            background: $color-white; // White background
+            color: $color-text; // Dark text
+            border: 1px solid $color-border-light; // Light border
+            padding: 12px $spacing-md;
+            max-width: 305px;
+            
+            .button-arrow {
+                filter: brightness(0); // Make arrow dark
+                transform: rotate(-45deg); // Point to top right corner
+                transition: filter $transition-base, transform $transition-base;
+            }
+            
+            @include button-hover-effect(#202A44);
+            
+            &:hover .button-arrow {
+                transform: translateX(4px) rotate(-45deg); // Combine hover slide with rotation
+            }
+        }
+    }
+}
+
+// Testimonial Section - Two column layout like approach section
+.testimonial-section {
+    background: $color-white;
+    border-top: 1px solid $color-border;
+    overflow: hidden;
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr auto 2fr; // Left 1/3, Right 2/3
+    grid-template-rows: 1fr;
+    
+    @media (min-width: $breakpoint-desktop) {
+        height: 514px;
+        min-height: 514px;
+    }
+    
+    // Fixed left side
+    .testimonial-left {
+        position: sticky;
+        left: 0;
+        top: 0;
+        padding: $spacing-5xl;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        min-height: 100vh;
+        z-index: 5;
+        background: $color-white;
+        
+        @media (min-width: $breakpoint-desktop) {
+            min-height: 514px;
+            height: 514px;
+        }
+    }
+    
+    // Fixed divider
+    .testimonial-divider {
+        width: 1px;
+        background: #9CB7B2;
+        position: sticky;
+        left: 0;
+        z-index: 4;
+        align-self: stretch;
+    }
+    
+    // Right side with testimonial content
+    .testimonial-right {
+        padding: $spacing-5xl;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        position: relative;
+        transition: height 0.4s ease-in-out;
+        overflow: hidden;
+        
+        @media (min-width: $breakpoint-desktop) {
+            height: 514px;
+            max-height: 514px;
+            padding: $spacing-5xl $spacing-5xl $spacing-5xl $spacing-4xl;
+        }
+        
+        .testimonial-item {
+            display: none !important;
+            flex-direction: column;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            
+            &:not(.active) {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+            
+            &.active {
+                display: flex !important;
+                opacity: 1;
+                position: relative;
+            }
+            
+            // Second testimonial item - don't use absolute positioning
+            &:nth-child(2) {
+                position: relative !important;
+            }
+            
+            blockquote {
+                font-size: 48px;
+                font-weight: $font-weight-light;
+                color: $color-primary;
+                margin: 0;
+                font-style: italic;
+                line-height: 1.4;
+                max-width: 900px;
+                flex-shrink: 1;
+                overflow: hidden;
+                padding: 0 $spacing-md;
+                display: inline;
+                
+                @media (min-width: $breakpoint-desktop) {
+                    display: block;
+                }
+            }
+            
+            .testimonial-author {
+                font-size: $font-size-md;
+                font-weight: $font-weight-normal;
+                color: $color-text-secondary;
+                margin: 0;
+                flex-shrink: 0;
+                display: inline;
+                margin-left: $spacing-sm;
+                
+                @media (min-width: $breakpoint-desktop) {
+                    margin-top: $spacing-lg;
+                    margin-left: 0;
+                    padding-left: $spacing-md;
+                    display: block;
+                }
+                
+                .testimonial-company {
+                    color: #02635E;
+                }
+            }
+        }
+    }
+}
+
+.testimonial-nav {
+    display: flex;
+    gap: $spacing-md;
+    
+    button {
+        background: transparent;
+        border: 1px solid $color-border;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all $transition-base;
+        
+        &:hover:not(.disabled) {
+            background: $color-primary;
+            border-color: $color-primary;
+            
+            svg {
+                color: $color-white;
+            }
+        }
+        
+        &.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        svg {
+            width: 19px;
+            height: 16px;
+            color: $color-text-secondary;
+            transition: color $transition-base;
+        }
+    }
+}
+
