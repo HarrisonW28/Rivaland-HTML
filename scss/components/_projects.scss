@@ -10,6 +10,24 @@
     background: $color-white;
     border-top: 1px solid $color-border;
     align-items: stretch;
+    position: relative;
+    
+    // On 1920px+, extend border to full width
+    @media (min-width: 1920px) {
+        border-top: none; // Hide regular border, use ::before for full-width
+        
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: 1px;
+            background: $color-border;
+            z-index: 0;
+        }
+    }
 }
 
 .projects-left {
@@ -121,6 +139,647 @@
     svg {
         width: 100%;
         height: 100%;
+    }
+}
+
+// ============================================
+// TYPE VARIANTS
+// ============================================
+
+// Standard type (default - regular projects layout)
+.projects--standard {
+    // Uses base .projects styles
+}
+
+// ============================================
+// COLOR VARIANTS (can be combined with type variants)
+// ============================================
+
+.projects {
+    // Light color scheme
+    &--light {
+        // Standard type with light colors
+        &.projects--standard {
+        background: $color-white;
+        border-top-color: $color-border;
+        
+        .projects-left h2 {
+            color: $color-primary-light;
+        }
+        
+        .projects-button {
+            background: $color-white;
+            border-color: $color-accent-teal-light;
+            color: $color-black;
+        }
+        
+        .project-list {
+            border-color: $color-border-light;
+        }
+        
+        .project-card {
+            border-bottom-color: $color-border-light;
+            
+            &:hover {
+                background: $color-primary;
+                
+                .project-meta,
+                .project-location,
+                .arrow-link {
+                    color: $color-white;
+                }
+            }
+        }
+        
+        .project-meta {
+            color: $color-text-secondary;
+        }
+        
+        .project-location {
+            color: $color-primary-light;
+        }
+        
+        .arrow-link {
+            color: $color-text-secondary;
+        }
+        }
+    }
+    
+    // Dark color scheme
+    &--dark {
+        // Standard type with dark colors
+        &.projects--standard {
+        background: $color-primary;
+        border-top-color: rgba(255, 255, 255, 0.2);
+        
+        .projects-left h2 {
+            color: $color-white;
+        }
+        
+        .projects-button {
+            background: $color-primary;
+            border-color: rgba(255, 255, 255, 0.3);
+            color: $color-white;
+            
+            &:hover {
+                background: $color-white;
+                color: $color-primary;
+            }
+        }
+        
+        .project-list {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .project-card {
+            border-bottom-color: rgba(255, 255, 255, 0.2);
+            
+            &:hover {
+                background: rgba(255, 255, 255, 0.1);
+                
+                .project-meta,
+                .project-location,
+                .arrow-link {
+                    color: $color-white;
+                }
+            }
+        }
+        
+        .project-meta {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .project-location {
+            color: $color-white;
+        }
+        
+        .arrow-link {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        }
+    }
+}
+
+// ============================================
+// RESPONSIVE STYLES
+// ============================================
+
+// Tablet (≤1024px)
+@media (max-width: $breakpoint-desktop) {
+    .projects {
+        grid-template-columns: 1fr;
+
+        &-left {
+            padding: $spacing-4xl $spacing-3xl;
+        }
+    }
+}
+
+// Tablet Landscape (768px - 1024px)
+@media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
+    .projects {
+        grid-template-columns: 1fr 2fr;
+    }
+}
+
+// Mobile (≤768px)
+@media (max-width: $breakpoint-tablet) {
+    .projects {
+        display: flex;
+        flex-direction: column;
+
+        &-left {
+            padding: $spacing-3xl; // Equal padding on all sides
+            order: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+
+            h2 {
+                font-size: 34px; // 34px as specified
+                margin-bottom: $spacing-lg;
+                order: 1;
+            }
+
+            .projects-button {
+                display: none; // Hide original button in projects-left, will be moved and shown after project-list via JavaScript
+            }
+        }
+    }
+
+    .project-list {
+        order: 2;
+        border: none;
+        border-top: 1px solid $color-border;
+    }
+
+    .project-card {
+        padding: $spacing-md;
+        padding-left: $spacing-md; // Reduced left padding to move text further left on mobile
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: $spacing-md;
+        
+        .project-info {
+            width: 100%;
+        }
+        
+        .project-location {
+            br {
+                display: block; // Show line breaks on mobile
+            }
+        }
+        
+        .arrow-link {
+            align-self: flex-end; // Position arrow to bottom right
+            margin-top: auto; // Push to bottom
+            margin-right: $spacing-md; // Add whitespace on the right
+            margin-bottom: $spacing-xs; // Add whitespace at the bottom
+        }
+        
+        &:last-child {
+            border-bottom: 1px solid $color-border-light;
+        }
+    }
+
+    // Style for button when moved after project-list (MOBILE ONLY)
+    .projects-button-mobile {
+        order: 3;
+        display: flex !important;
+        width: calc(100% - #{$spacing-md * 2});
+        max-width: 100%;
+        margin: $spacing-lg $spacing-md $spacing-3xl;
+        padding: $spacing-md;
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid $color-accent-teal-light;
+        background: $color-white;
+        color: $color-black;
+        text-decoration: none;
+        font-family: Roboto;
+        font-weight: $font-weight-light;
+        font-size: $font-size-md;
+        line-height: 38px;
+        @include button-hover-effect;
+    }
+    
+    // Dark background for projects section on services page (MOBILE ONLY)
+    .projects--services {
+        background: $color-primary;
+        border-top-color: rgba(255, 255, 255, 0.2);
+        
+        .projects-left {
+            h2 {
+                color: $color-white;
+            }
+        }
+        
+        .projects-button-mobile {
+            background: $color-primary;
+            border-color: rgba(255, 255, 255, 0.3);
+            color: $color-white;
+            
+            &:hover {
+                background: $color-white;
+                color: $color-primary;
+            }
+        }
+        
+        .project-list {
+            border-top-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .project-card {
+            border-bottom-color: rgba(255, 255, 255, 0.2);
+            
+            &:hover {
+                background: rgba(255, 255, 255, 0.1);
+                
+                .project-meta,
+                .project-location,
+                .arrow-link {
+                    color: $color-white;
+                }
+            }
+            
+            &:last-child {
+                border-bottom-color: rgba(255, 255, 255, 0.2);
+            }
+        }
+        
+        .project-meta {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .project-status {
+            color: $color-accent-teal; // Keep status color for visibility
+        }
+        
+        .project-location {
+            color: $color-white;
+        }
+        
+        .arrow-link {
+            color: rgba(255, 255, 255, 0.7);
+        }
+    }
+}
+
+// Small Mobile (≤480px)
+@media (max-width: $breakpoint-mobile) {
+    .projects-left h2 {
+        font-size: 34px; // 34px on small mobile too
+    }
+}
+
+// ============================================
+// PROJECTS INDEX COMPONENT (New layout for projects page)
+// ============================================
+
+.projects-index {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 0;
+    padding: 0;
+    background: $color-white;
+    min-height: 100vh;
+}
+
+.projects-index-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: $spacing-5xl;
+    gap: $spacing-3xl;
+
+    h2 {
+        font-size: $font-size-8xl;
+        font-weight: $font-weight-normal;
+        color: $color-primary-light;
+        margin: 0;
+    }
+
+    .projects-index-description {
+        font-size: $font-size-base;
+        color: $color-text-secondary;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .projects-filters {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-sm;
+    }
+
+    .projects-filter-input-wrapper {
+        display: none; // Hidden on desktop, shown on mobile
+        position: relative;
+        width: 100%;
+    }
+
+    .projects-filter-input {
+        width: 100%;
+        padding: 12px $spacing-md;
+        padding-right: 48px; // Space for clear button
+        border: 1px solid $color-border;
+        background: $color-white;
+        color: $color-primary-light;
+        font-size: $font-size-md;
+        font-weight: $font-weight-light;
+        font-family: Roboto;
+        border-radius: 0;
+        -webkit-appearance: none;
+        appearance: none;
+
+        &::placeholder {
+            color: $color-text-secondary;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $color-primary;
+        }
+    }
+
+    .projects-filter-clear {
+        position: absolute;
+        right: $spacing-md;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $color-text-secondary;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity $transition-base;
+
+        &.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        &:hover {
+            color: $color-primary;
+        }
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    .projects-filters-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-sm;
+    }
+
+    .project-filter {
+        background: $color-white;
+        border: 1px solid $color-border;
+        color: $color-primary-light;
+        font-size: $font-size-md;
+        font-weight: $font-weight-light;
+        padding: 12px $spacing-md;
+        cursor: pointer;
+        transition: all $transition-base;
+        text-align: left;
+        font-family: Roboto;
+
+        &:hover {
+            background: $color-primary;
+            color: $color-white;
+            border-color: $color-primary;
+        }
+
+        &.active {
+            background: $color-primary;
+            color: $color-white;
+            border-color: $color-primary;
+        }
+    }
+
+    .projects-accent-line {
+        width: 100%;
+        height: 2px;
+        background: $color-accent-teal;
+        margin-top: auto;
+    }
+}
+
+.projects-index-right {
+    background: $color-white;
+    padding: $spacing-5xl;
+    display: flex;
+    flex-direction: column;
+}
+
+.projects-index-right .project-list {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-3xl;
+    
+    // Reset gap on mobile (handled in mobile media query)
+    @media (max-width: $breakpoint-tablet) {
+        gap: 0;
+    }
+}
+
+.project-card--index {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: $spacing-3xl;
+    padding: 0;
+    border: none;
+    align-items: center;
+    cursor: pointer;
+    transition: opacity $transition-base;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    .project-card-image {
+        width: 200px;
+        height: 200px;
+        flex-shrink: 0;
+        overflow: hidden;
+        border-radius: 4px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    }
+
+    .project-card-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: $spacing-md;
+        flex: 1;
+    }
+
+    .project-info {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .project-meta {
+        color: $color-text-secondary;
+        font-size: $font-size-md;
+        font-weight: $font-weight-normal;
+        margin: 0;
+    }
+
+    .project-status {
+        color: $color-accent-teal;
+    }
+
+    .project-location {
+        font-size: $font-size-3xl;
+        color: $color-primary-light;
+        margin: 0;
+        font-weight: $font-weight-normal;
+        
+        br {
+            display: block;
+        }
+    }
+
+    .arrow-link {
+        color: $color-text-secondary;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 50%;
+        
+        svg {
+            width: 19px;
+            height: 16px;
+        }
+    }
+}
+
+// Responsive styles for projects-index
+@media (max-width: $breakpoint-desktop) {
+    .projects-index {
+        grid-template-columns: 1fr;
+    }
+
+    .projects-index-left {
+        padding: $spacing-4xl $spacing-3xl;
+    }
+
+    .projects-index-right {
+        padding: $spacing-4xl $spacing-3xl;
+    }
+}
+
+@media (max-width: $breakpoint-tablet) {
+    .projects-index-left {
+        padding: $spacing-3xl $spacing-md;
+        gap: $spacing-2xl;
+
+        h2 {
+            font-size: 34px;
+        }
+
+        .projects-index-description {
+            display: none; // Hide description on mobile
+        }
+
+        .projects-filters {
+            gap: $spacing-md;
+        }
+
+        .projects-filter-input-wrapper {
+            display: block; // Show filter input on mobile
+        }
+
+        .projects-filters-buttons {
+            display: none; // Hide filter buttons on mobile
+        }
+    }
+
+    .projects-index-right {
+        padding: 0; // Remove padding to allow full-width cards
+    }
+
+    .projects-index-right .project-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        height: calc(100vh - 280px); // Account for nav (~80px) + heading + filter (~200px)
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+    }
+
+    .project-card--index {
+        grid-template-columns: 1fr;
+        gap: 0; // No gap between image and content on mobile
+        padding: 0;
+        border: none;
+        background: $color-white;
+        flex-shrink: 0; // Prevent cards from shrinking
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        min-height: calc(100vh - 280px); // Each card takes full viewport height minus header/filter
+        display: flex;
+        flex-direction: column;
+
+        .project-card-image {
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+            border-radius: 0;
+            
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+        }
+
+        .project-card-content {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: $spacing-lg $spacing-md;
+            gap: $spacing-md;
+            flex-shrink: 0;
+        }
+
+        .project-info {
+            flex: 1;
+        }
+
+        .arrow-link {
+            align-self: center;
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+        }
     }
 }
 

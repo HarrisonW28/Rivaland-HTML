@@ -1,17 +1,17 @@
 // Accordion functionality
 document.addEventListener('DOMContentLoaded', function() {
-    const accordionToggles = document.querySelectorAll('.accordion-toggle');
+    const accordionToggles = document.querySelectorAll('.accordion-toggle, .accordion-toggle--page');
     
     // Function to update icon text
     function updateIcon(item, isActive) {
-        const toggle = item.querySelector('.accordion-toggle');
+        const toggle = item.querySelector('.accordion-toggle, .accordion-toggle--page');
         if (toggle) {
             toggle.textContent = isActive ? '×' : '+';
         }
     }
     
     // Initialize icons for all items
-    document.querySelectorAll('.service-item').forEach(item => {
+    document.querySelectorAll('.service-item, .service-item--page').forEach(item => {
         const isActive = item.classList.contains('active');
         updateIcon(item, isActive);
     });
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     accordionToggles.forEach(toggle => {
         toggle.addEventListener('click', function(e) {
             e.stopPropagation();
-            const serviceItem = this.closest('.service-item');
+            const serviceItem = this.closest('.service-item, .service-item--page');
             const isActive = serviceItem.classList.contains('active');
             const servicesSection = document.querySelector('.services');
             
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             // Close all accordions and reset icons
-            document.querySelectorAll('.service-item').forEach(item => {
+            document.querySelectorAll('.service-item, .service-item--page').forEach(item => {
                 item.classList.remove('active');
                 updateIcon(item, false);
             });
@@ -61,19 +61,43 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Also allow clicking on the header to toggle
-    const serviceHeaders = document.querySelectorAll('.service-header');
+    const serviceHeaders = document.querySelectorAll('.service-header, .service-header--page');
     serviceHeaders.forEach(header => {
-        const serviceItem = header.closest('.service-item');
-        if (serviceItem.querySelector('.accordion-toggle')) {
+        const serviceItem = header.closest('.service-item, .service-item--page');
+        const toggleSelector = serviceItem.classList.contains('service-item--page') 
+            ? '.accordion-toggle--page' 
+            : '.accordion-toggle';
+        if (serviceItem.querySelector(toggleSelector)) {
             header.addEventListener('click', function(e) {
-                if (e.target !== header.querySelector('.accordion-toggle')) {
-                    const toggle = header.querySelector('.accordion-toggle');
+                const toggle = header.querySelector(toggleSelector);
+                if (e.target !== toggle) {
                     if (toggle) {
                         toggle.click();
                     }
                 }
             });
         }
+    });
+    
+    // Read more functionality for mobile services--page accordion
+    const readMoreLinks = document.querySelectorAll('.service-read-more');
+    readMoreLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const textFull = this.previousElementSibling; // .service-text-full
+            const isExpanded = textFull.classList.contains('expanded');
+            
+            if (isExpanded) {
+                textFull.classList.remove('expanded');
+                this.classList.remove('expanded');
+                this.querySelector('.read-more-text').textContent = 'Read more';
+            } else {
+                textFull.classList.add('expanded');
+                this.classList.add('expanded');
+                this.querySelector('.read-more-text').textContent = 'Read less';
+            }
+        });
     });
 });
 

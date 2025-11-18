@@ -45,3 +45,90 @@
     color: $color-accent;
 }
 
+// ============================================
+// RESPONSIVE STYLES
+// ============================================
+
+// Tablet (≤1024px)
+@media (max-width: $breakpoint-desktop) {
+    .hero {
+        &::before {
+            top: $spacing-md;
+            right: $spacing-md;
+            bottom: $spacing-md;
+            left: $spacing-md;
+        }
+    }
+
+    .hero-content {
+        padding: 0 $spacing-3xl;
+        margin: auto 0;
+
+        h1 {
+            font-size: $font-size-6xl;
+        }
+    }
+}
+
+// Tablet Landscape (768px - 1024px)
+@media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
+    .hero {
+        &::before {
+            top: $spacing-md;
+            right: $spacing-md;
+            bottom: $spacing-md;
+            left: $spacing-md;
+        }
+    }
+
+    .hero-content {
+        padding: 0 $spacing-4xl;
+        margin: auto 0;
+
+        h1 {
+            font-size: $font-size-6xl;
+        }
+    }
+}
+
+// Mobile (≤768px)
+@media (max-width: $breakpoint-tablet) {
+    .hero {
+        height: 100vh;
+        min-height: 600px;
+
+        &::before {
+            top: $spacing-md;
+            right: $spacing-md;
+            bottom: $spacing-md;
+            left: $spacing-md;
+        }
+    }
+
+    .hero-content {
+        padding: 0 $spacing-3xl;
+        margin: auto 0;
+
+        h1 {
+            font-size: $font-size-6xl;
+            line-height: 1.2;
+        }
+    }
+
+    .arrow-link {
+        width: $font-size-4xl;
+        height: $font-size-4xl;
+    }
+}
+
+// Small Mobile (≤480px)
+@media (max-width: $breakpoint-mobile) {
+    .hero-content {
+        padding: 0 $spacing-2xl;
+
+        h1 {
+            font-size: $font-size-5xl;
+        }
+    }
+}
+

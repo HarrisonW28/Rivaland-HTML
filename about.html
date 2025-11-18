@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<header class="hero hero-dark">
+<header class="hero hero--about hero--dark">
     <nav class="nav">
         <div class="logo"><a href="index.html"><img src="assets/svg/logo.svg" alt="logo"></a></div>
 
@@ -47,13 +47,13 @@
 
     <div class="hero-content">
         <h1>
-            A best in class offering with a proven pedigree of <span class="highlight">success</span>
+            A best in class offering with a proven pedigree of success
         </h1>
     </div>
 </header>
 
 <main>
-    <section class="intro">
+    <section class="intro intro--about intro--light">
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper interdum lacinia. Vestibulum pretium ante ut ligula fermentum rhoncus eget id neque. Pellentesque sit amet est a lectus convallis maximus in et felis. 
         </p>
@@ -96,7 +96,7 @@
     </section>
 
     <!-- Team Member Section - Reusing feature component -->
-    <section class="feature team-feature">
+    <section class="feature feature--team feature--light">
         <div class="feature-image">
             <img src="assets/images/headshot.png" alt="Andy Wilkins">
         </div>
@@ -203,37 +203,9 @@
     </section>
 </main>
 
-<footer class="site-footer">
-    <div class="footer-top">
-        <div class="footer-contact">
-            <p>Telephone: 01564 123456</p>
-            <p>Email: info@rivaland.co.uk</p>
-            <p>Connect on Linkedin</p>
-        </div>
-        <div class="footer-address">
-            <p>Beech House, Poolhead Lane,</p>
-            <p>Tanworth In Arden, B94 5ED</p>
-        </div>
-        <div class="footer-links">
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
-        </div>
-    </div>
-    <div class="footer-divider"></div>
-    <div class="footer-bottom">
-        <div class="footer-copyright">
-            <p>© Riva Land 2025. All rights reserved. Registered in England and Wales No: 09080608.</p>
-        </div>
-        <div></div>
-        <div class="footer-credit">
-            <p>Site by Brown + Cooper</p>
-        </div>
-    </div>
-    <div class="footer-logo">
-        <img src="assets/svg/logo.svg" alt="RIVALAND">
-    </div>
-</footer>
+    <div data-footer></div>
 
+<script src="js/footer.js"></script>
 <script src="js/accordion.js"></script>
 <script src="js/mobile-menu.js"></script>
 <script src="js/mobile-layout.js"></script>

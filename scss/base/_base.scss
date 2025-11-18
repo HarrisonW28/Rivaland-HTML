@@ -37,5 +37,29 @@ a,
 
 main {
     background: $color-white;
+    
+    // For viewport 1920px+, constrain content to 1440px with whitespace on sides
+    @media (min-width: 1920px) {
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+}
+
+// ============================================
+// RESPONSIVE STYLES
+// ============================================
+
+// Mobile (≤768px)
+@media (max-width: $breakpoint-tablet) {
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100%;
+        position: relative;
+    }
+    
+    * {
+        max-width: 100%;
+    }
 }
 

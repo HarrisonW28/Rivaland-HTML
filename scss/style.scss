@@ -25,8 +25,12 @@
 //    → scss/components/_projects.scss   - Projects list
 //    → scss/components/_news.scss       - News cards
 //
-// 📁 RESPONSIVE STYLES (Media Queries)
-//    → scss/_responsive.scss            - All mobile/tablet breakpoints
+// 📁 COMPONENT VARIANTS (Modifier classes)
+//    → scss/variants/_hero-variants.scss      - Hero variants (--dark, --services)
+//    → scss/variants/_intro-variants.scss    - Intro variants (--about)
+//    → scss/variants/_feature-variants.scss  - Feature variants (--team)
+//    → scss/variants/_testimonial-variants.scss - Testimonial variants
+//
 //
 // IMPORTANT: Edit SCSS files, NOT style.css (it's auto-generated)
 // ──────────────────────────────────────────────────────────────
@@ -52,5 +56,8 @@
 @import 'components/news';
 @import 'components/approach';
 
-// 5. Responsive styles (must come last to override defaults)
-@import 'responsive';
+// 5. Component Variants (modifier classes for components)
+@import 'variants/hero-variants';
+@import 'variants/intro-variants';
+@import 'variants/feature-variants';
+@import 'variants/testimonial-variants';
