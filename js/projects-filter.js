@@ -2,11 +2,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     const filterInput = document.getElementById('project-filter-input');
     const clearButton = document.getElementById('project-filter-clear');
-    const filterButtons = document.querySelectorAll('.project-filter');
+    const filterButtons = document.querySelectorAll('.projects-index__filter');
     const projectCards = document.querySelectorAll('.project-card--index');
     const dropdownToggle = document.getElementById('project-filter-dropdown-toggle');
     const dropdown = document.getElementById('project-filter-dropdown');
-    const dropdownItems = document.querySelectorAll('.project-filter-dropdown-item');
+    const dropdownItems = document.querySelectorAll('.projects-index__filter-dropdown-item');
     const clearMobileButton = document.getElementById('project-filter-clear-mobile');
 
     let currentFilters = []; // Track multiple filter types (array for multi-selection)
@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Total project cards:', projectCards.length);
         
         projectCards.forEach((card, index) => {
-            const meta = card.querySelector('.project-meta');
-            const location = card.querySelector('.project-location');
+            const meta = card.querySelector('.project-card__meta');
+            const location = card.querySelector('.project-card__location');
             
             if (!meta || !location) {
                 // If meta or location is missing, hide the card
@@ -268,10 +268,10 @@ document.addEventListener('DOMContentLoaded', function() {
         card.style.setProperty('background', '#ffffff', 'important');
         
         // Force default text colors (NOT white)
-        const meta = card.querySelector('.project-meta');
+        const meta = card.querySelector('.project-card__meta');
         const status = card.querySelector('.project-status');
-        const location = card.querySelector('.project-location');
-        const arrow = card.querySelector('.arrow-link');
+        const location = card.querySelector('.project-card__location');
+        const arrow = card.querySelector('.project-card__arrow');
         
         if (meta) {
             meta.style.setProperty('color', '#7a8796', 'important'); // $color-text-secondary
@@ -294,10 +294,10 @@ document.addEventListener('DOMContentLoaded', function() {
         card.style.setProperty('background', '#02635E', 'important');
         
         // White text colors
-        const meta = card.querySelector('.project-meta');
+        const meta = card.querySelector('.project-card__meta');
         const status = card.querySelector('.project-status');
-        const location = card.querySelector('.project-location');
-        const arrow = card.querySelector('.arrow-link');
+        const location = card.querySelector('.project-card__location');
+        const arrow = card.querySelector('.project-card__arrow');
         
         if (meta) {
             meta.style.setProperty('color', 'rgba(255, 255, 255, 0.8)', 'important');

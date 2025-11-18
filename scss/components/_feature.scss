@@ -34,6 +34,7 @@
         }
 }
 
+.feature__image,
 .feature-image {
     width: 100%;
     height: 100%;
@@ -53,6 +54,7 @@
     }
 }
 
+.feature__copy,
 .feature-copy {
     padding: $spacing-5xl;
     display: flex;
@@ -61,7 +63,7 @@
     grid-column: 2; // Text (eyebrow + copy) in column 2 (right) by default
     grid-row: 1; // Ensure it's in row 1
 
-    > p:not(.feature-eyebrow) {
+    > p:not(.feature-eyebrow):not(.feature__eyebrow) {
         margin-bottom: $spacing-lg;
         color: $color-accent-teal;
         font-size: $font-size-base;
@@ -75,21 +77,22 @@
         font-family: Roboto;
         font-weight: $font-weight-light;
         font-size: $font-size-md;
-        line-height: 38px;
+        line-height: $line-height-button;
         letter-spacing: 0;
         display: flex;
         align-items: center;
         justify-content: space-between;
         border: 1px solid $color-accent-teal-light;
         background: $color-white;
-        padding: 12px $spacing-md;
+        padding: $spacing-12 $spacing-md;
         transition: color $transition-base;
-        max-width: 305px;
+        max-width: $button-width-sm;
         box-sizing: border-box;
         @include button-hover-effect;
     }
 }
 
+.feature__eyebrow,
 .feature-eyebrow {
     font-size: $font-size-2xl;
     color: $color-primary;
@@ -104,10 +107,11 @@
         background: $color-white;
         border-top-color: $color-border;
         
+        .feature__copy,
         .feature-copy {
             background: $color-white;
             
-            > p:not(.feature-eyebrow) {
+            > p:not(.feature-eyebrow):not(.feature__eyebrow) {
                 color: $color-accent-teal;
             }
             
@@ -118,6 +122,7 @@
             }
         }
         
+        .feature__eyebrow,
         .feature-eyebrow {
             color: $color-primary;
         }
@@ -126,7 +131,7 @@
     // Dark variant
     &--dark {
         background: $color-primary;
-        border-top-color: rgba(255, 255, 255, 0.2);
+        border-top-color: $color-white-opacity-20;
         position: relative;
         
         // On 1920px+, extend background to fill whitespace
@@ -152,21 +157,22 @@
                 transform: translateX(-50%);
                 width: 100vw;
                 height: 1px;
-                background: rgba(255, 255, 255, 0.2);
+                background: $color-white-opacity-20;
                 z-index: 0;
             }
         }
         
+        .feature__copy,
         .feature-copy {
             background: $color-primary;
             
-            > p:not(.feature-eyebrow) {
-                color: rgba(255, 255, 255, 0.85);
+            > p:not(.feature-eyebrow):not(.feature__eyebrow) {
+                color: $color-white-opacity-85;
             }
             
             .link-button {
                 background: $color-primary;
-                border-color: rgba(255, 255, 255, 0.3);
+                border-color: $color-white-opacity-30;
                 color: $color-white;
                 
                 &:hover {
@@ -176,6 +182,7 @@
             }
         }
         
+        .feature__eyebrow,
         .feature-eyebrow {
             color: $color-white;
         }
@@ -183,10 +190,12 @@
     
     // Services variant - image on right, copy on left
     &--services {
+        .feature__image,
         .feature-image {
             grid-column: 2; // Image on right for services
         }
         
+        .feature__copy,
         .feature-copy {
             grid-column: 1; // Copy on left for services
         }
@@ -202,10 +211,12 @@
     .feature {
         grid-template-columns: 1fr;
 
+        &__image,
         &-image {
             padding: $spacing-4xl $spacing-3xl;
         }
 
+        &__copy,
         &-copy {
             padding: $spacing-4xl $spacing-3xl;
         }
@@ -228,6 +239,7 @@
 
 // Small Mobile (≤480px)
 @media (max-width: $breakpoint-mobile) {
+    .feature__eyebrow,
     .feature-eyebrow {
         font-size: $font-size-xl; // 22px on small mobile too
     }

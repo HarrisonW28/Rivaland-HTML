@@ -59,39 +59,43 @@
         </p>
     </section>
 
-    <!-- Values Section - Reusing services component -->
-    <section class="services">
-        <div class="services-card">
+    <!-- Values Section - Using accordion component -->
+    <section class="accordion accordion--services">
+        <div class="accordion--services__left">
+            <div class="accordion--services__card">
             <p class="eyebrow">The values that underpin our organisation</p>
+            </div>
         </div>
-        <div class="service-list">
-            <article class="service-item">
-                <div class="service-header">
+        <div class="accordion--services__right">
+            <div class="accordion">
+                <article class="accordion__item">
+                    <div class="accordion__header">
                     <p>Honesty</p>
-                    <button class="accordion-toggle" aria-label="expand honesty">+</button>
+                        <button class="accordion__toggle" aria-label="expand honesty">+</button>
                 </div>
-                <div class="service-content">
+                    <div class="accordion__content">
                     <p>We believe in transparent communication and honest dealings with all our partners, clients, and stakeholders. Integrity is at the core of everything we do.</p>
                 </div>
             </article>
-            <article class="service-item">
-                <div class="service-header">
+                <article class="accordion__item">
+                    <div class="accordion__header">
                     <p>Excellence</p>
-                    <button class="accordion-toggle" aria-label="expand excellence">+</button>
+                        <button class="accordion__toggle" aria-label="expand excellence">+</button>
                 </div>
-                <div class="service-content">
+                    <div class="accordion__content">
                     <p>We strive for excellence in every aspect of our work, from initial site assessment through to securing planning consent and beyond.</p>
                 </div>
             </article>
-            <article class="service-item">
-                <div class="service-header">
+                <article class="accordion__item">
+                    <div class="accordion__header">
                     <p>Endeavour</p>
-                    <button class="accordion-toggle" aria-label="expand endeavour">+</button>
+                        <button class="accordion__toggle" aria-label="expand endeavour">+</button>
                 </div>
-                <div class="service-content">
+                    <div class="accordion__content">
                     <p>We are committed to going the extra mile, working diligently to overcome challenges and deliver successful outcomes for every project.</p>
                 </div>
             </article>
+            </div>
         </div>
     </section>
 

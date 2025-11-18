@@ -53,14 +53,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Move "What we offer" button after Planning on mobile
+    // Move "What we offer" button after accordion on mobile
     function moveServicesButton() {
         handleButtonReposition({
-            button: document.querySelector('.services-card .link-button'),
-            container: document.querySelector('.services'),
-            list: document.querySelector('.service-list'),
+            button: document.querySelector('.accordion--services__card .button'),
+            container: document.querySelector('.accordion--services'),
+            list: document.querySelector('.accordion'),
             mobileClass: 'link-button-mobile',
-            desktopContainer: document.querySelector('.services-card'),
+            desktopContainer: document.querySelector('.accordion--services__card'),
             desktopClass: 'link-button-offset'
         });
     }

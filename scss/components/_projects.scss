@@ -1,6 +1,7 @@
 // ============================================
 // PROJECTS SECTION
 // ============================================
+@use "sass:color";
 
 .projects {
     display: grid;
@@ -50,7 +51,7 @@
     font-family: Roboto;
     font-weight: $font-weight-light;
     font-size: $font-size-md;
-    line-height: 38px;
+    line-height: $line-height-button;
     letter-spacing: 0;
     display: flex;
     align-items: center;
@@ -64,7 +65,7 @@
     @include button-hover-effect;
 }
 
-.project-list {
+.projects-index__list {
     border: 1px solid $color-border-light;
     height: 100%;
     display: flex;
@@ -74,7 +75,7 @@
 .project-card {
     display: grid;
     grid-template-columns: 1fr auto;
-    padding: 50px;
+    padding: $spacing-50;
     padding-left: $spacing-6xl;
     border-bottom: 1px solid $color-border-light;
     align-items: center;
@@ -88,9 +89,9 @@
     &:hover:not(.project-card--index) {
         background: $color-primary;
 
-        .project-meta,
-        .project-location,
-        .arrow-link {
+        .project-card__meta,
+        .project-card__location,
+        .project-card__arrow {
             color: $color-white;
         }
     }
@@ -100,13 +101,13 @@
     }
 }
 
-.project-info {
+.project-card__info {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+        gap: $spacing-6;
 }
 
-.project-meta {
+.project-card__meta {
     color: $color-text-secondary;
     font-size: $font-size-md;
     font-weight: $font-weight-normal;
@@ -117,7 +118,7 @@
     color: $color-accent-teal;
 }
 
-.project-location {
+.project-card__location {
     font-size: $font-size-3xl;
     color: $color-primary-light;
     margin: 0;
@@ -128,7 +129,7 @@
     font-weight: $font-weight-normal;
 }
 
-.arrow-link {
+.project-card__arrow {
     color: $color-text-secondary;
     width: $font-size-7xl;
     height: $font-size-7xl;
@@ -174,7 +175,7 @@
             color: $color-black;
         }
         
-        .project-list {
+        .projects-index__list {
             border-color: $color-border-light;
         }
         
@@ -186,21 +187,21 @@
                 
                 .project-meta,
                 .project-location,
-                .arrow-link {
+                .project-card__arrow {
                     color: $color-white;
                 }
             }
         }
         
-        .project-meta {
+        .project-card__meta {
             color: $color-text-secondary;
         }
         
-        .project-location {
+        .project-card__location {
             color: $color-primary-light;
         }
         
-        .arrow-link {
+        .project-card__arrow {
             color: $color-text-secondary;
         }
         }
@@ -211,7 +212,7 @@
         // Standard type with dark colors
         &.projects--standard {
         background: $color-primary;
-        border-top-color: rgba(255, 255, 255, 0.2);
+        border-top-color: $color-white-opacity-20;
         
         .projects-left h2 {
             color: $color-white;
@@ -219,7 +220,7 @@
         
         .projects-button {
             background: $color-primary;
-            border-color: rgba(255, 255, 255, 0.3);
+            border-color: $color-white-opacity-30;
             color: $color-white;
             
             &:hover {
@@ -228,34 +229,34 @@
             }
         }
         
-        .project-list {
-            border-color: rgba(255, 255, 255, 0.2);
+        .projects-index__list {
+            border-color: $color-white-opacity-20;
         }
         
         .project-card {
-            border-bottom-color: rgba(255, 255, 255, 0.2);
+            border-bottom-color: $color-white-opacity-20;
             
             &:hover {
-                background: rgba(255, 255, 255, 0.1);
+                background: $color-white-opacity-10;
                 
                 .project-meta,
                 .project-location,
-                .arrow-link {
+                .project-card__arrow {
                     color: $color-white;
                 }
             }
         }
         
-        .project-meta {
-            color: rgba(255, 255, 255, 0.7);
+        .project-card__meta {
+            color: $color-white-opacity-70;
         }
         
-        .project-location {
+        .project-card__location {
             color: $color-white;
         }
         
-        .arrow-link {
-            color: rgba(255, 255, 255, 0.7);
+        .project-card__arrow {
+            color: $color-white-opacity-70;
         }
         }
     }
@@ -297,7 +298,7 @@
             gap: 0;
 
             h2 {
-                font-size: 34px; // 34px as specified
+                font-size: $spacing-34; // 34px as specified
                 margin-bottom: $spacing-lg;
                 order: 1;
             }
@@ -308,7 +309,7 @@
         }
     }
 
-    .project-list {
+    .projects-index__list {
         order: 2;
         border: none;
         border-top: 1px solid $color-border;
@@ -322,17 +323,17 @@
         align-items: flex-start;
         gap: $spacing-md;
         
-        .project-info {
+        .project-card__info {
             width: 100%;
         }
         
-        .project-location {
+        .project-card__location {
             br {
                 display: block; // Show line breaks on mobile
             }
         }
         
-        .arrow-link {
+        .project-card__arrow {
             align-self: flex-end; // Position arrow to bottom right
             margin-top: auto; // Push to bottom
             margin-right: $spacing-md; // Add whitespace on the right
@@ -362,14 +363,14 @@
         font-family: Roboto;
         font-weight: $font-weight-light;
         font-size: $font-size-md;
-        line-height: 38px;
+        line-height: $line-height-button;
         @include button-hover-effect;
     }
     
     // Dark background for projects section on services page (MOBILE ONLY)
     .projects--services {
         background: $color-primary;
-        border-top-color: rgba(255, 255, 255, 0.2);
+        border-top-color: $color-white-opacity-20;
         
         .projects-left {
             h2 {
@@ -379,7 +380,7 @@
         
         .projects-button-mobile {
             background: $color-primary;
-            border-color: rgba(255, 255, 255, 0.3);
+            border-color: $color-white-opacity-30;
             color: $color-white;
             
             &:hover {
@@ -388,42 +389,42 @@
             }
         }
         
-        .project-list {
-            border-top-color: rgba(255, 255, 255, 0.2);
+        .projects-index__list {
+            border-top-color: $color-white-opacity-20;
         }
         
         .project-card {
-            border-bottom-color: rgba(255, 255, 255, 0.2);
+            border-bottom-color: $color-white-opacity-20;
             
             &:hover {
-                background: rgba(255, 255, 255, 0.1);
+                background: $color-white-opacity-10;
                 
-                .project-meta,
-                .project-location,
-                .arrow-link {
+                .project-card__meta,
+                .project-card__location,
+                .project-card__arrow {
                     color: $color-white;
                 }
             }
             
             &:last-child {
-                border-bottom-color: rgba(255, 255, 255, 0.2);
+                border-bottom-color: $color-white-opacity-20;
             }
         }
         
-        .project-meta {
-            color: rgba(255, 255, 255, 0.7);
+        .project-card__meta {
+            color: $color-white-opacity-70;
         }
         
         .project-status {
             color: $color-accent-teal; // Keep status color for visibility
         }
         
-        .project-location {
+        .project-card__location {
             color: $color-white;
         }
         
-        .arrow-link {
-            color: rgba(255, 255, 255, 0.7);
+        .project-card__arrow {
+            color: $color-white-opacity-70;
         }
     }
 }
@@ -444,8 +445,8 @@
     grid-template-columns: 1fr;
     gap: 0;
     padding: 0;
-    background: rgba(2, 99, 94, 0.05); // #02635E0D - teal background on all screen sizes
-    min-height: 100vh; // Only on desktop/tablet, removed on mobile
+    background: $color-accent-teal-opacity-05; // Teal background on all screen sizes
+    min-height: 100vh;
     margin: 0;
     width: 100%;
     max-width: 100%;
@@ -454,18 +455,16 @@
     // Desktop: adjust layout
     @media (min-width: 1025px) {
         grid-template-columns: 40% 60%; // Left section at 40%, right 60%
-        margin: 0 clamp(20px, 5vw, 80px); // Responsive margins that scale with viewport
-        margin-bottom: clamp(40px, 5vw, 80px); // Add bottom margin for desktop
+        margin: 0 clamp(20px, 5vw, 80px) clamp(40px, 5vw, 80px); // Responsive margins with bottom margin
         max-width: calc(100vw - clamp(40px, 10vw, 160px)); // Prevent overflow, account for margins
         width: 100%;
-        min-height: auto; // Remove min-height on desktop to allow natural height
+        align-items: start; // Prevent columns from overlapping
     }
     
     // On 1920px+, constrain to 1440px like main content
     @media (min-width: 1920px) {
         max-width: 1440px;
-        margin: 0 auto;
-        margin-bottom: clamp(40px, 5vw, 80px); // Add bottom margin for 1920px+
+        margin: 0 auto clamp(40px, 5vw, 80px); // Center with bottom margin
     }
 }
 
@@ -479,11 +478,6 @@
     max-width: 100%;
     box-sizing: border-box;
     min-width: 0; // Allow flex shrinking
-    
-    // Desktop: Align to start to prevent overlap
-    @media (min-width: 1025px) {
-        align-self: start; // Align to start to prevent overlap with right column
-    }
 
     h2 {
         font-size: $font-size-8xl;
@@ -493,10 +487,10 @@
     }
 
     .projects-index-description {
-        font-size: 24px;
-        color: #7a8796;
-        line-height: 1.6;
-        margin: 0 0 32px 0;
+        font-size: $font-size-2xl; // 24px
+        color: $color-text-secondary;
+        line-height: $line-height-base;
+        margin: 0 0 $spacing-2xl 0;
     }
 
     .projects-filters {
@@ -508,15 +502,15 @@
         max-width: 100%;
     }
 
-    .projects-filter-input-wrapper {
+    .projects-index__filter-input-wrapper {
         display: none; // Hidden on desktop, shown on mobile
         position: relative;
         width: 100%;
     }
 
-    .projects-filter-input {
+    .projects-index__filter-input {
         width: 100%;
-        padding: 12px $spacing-md;
+        padding: $spacing-12 $spacing-md;
         padding-right: 48px; // Space for clear button
         border: 1px solid $color-border;
         background: $color-white;
@@ -538,7 +532,7 @@
         }
     }
 
-    .projects-filter-clear {
+    .projects-index__filter-clear {
         position: absolute;
         right: $spacing-md;
         top: 50%;
@@ -546,7 +540,7 @@
         background: transparent;
         border: none;
         cursor: pointer;
-        padding: 4px;
+        padding: $spacing-4;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -570,20 +564,20 @@
         }
     }
 
-    .projects-filters-buttons {
+    .projects-index__filters-buttons {
         display: flex;
         flex-direction: row; // Horizontal layout on desktop
         gap: $spacing-sm;
         flex-wrap: nowrap; // Force all buttons on same line
     }
 
-    .project-filter {
+    .projects-index__filter {
         background: $color-white;
         border: 1px solid $color-border;
         color: $color-primary-light;
         font-size: clamp(14px, 1.5vw, 16px); // Responsive font size
         font-weight: $font-weight-light;
-        padding: 12px clamp(12px, 2vw, 20px); // Responsive padding
+        padding: $spacing-12 clamp(12px, 2vw, 20px); // Responsive padding
         cursor: pointer;
         transition: all $transition-base;
         text-align: center; // Center text in horizontal buttons
@@ -610,15 +604,15 @@
     }
     
     // Filter dropdown (mobile only)
-    .projects-filter-dropdown-wrapper {
+    .projects-index__filter-dropdown-wrapper {
         display: none; // Hidden on desktop
         position: relative;
         width: 100%;
     }
     
-    .projects-filter-dropdown-toggle {
+    .projects-index__filter-dropdown-toggle {
         width: 100%;
-        padding: 12px $spacing-md;
+        padding: $spacing-12 $spacing-md;
         border: 1px solid $color-border;
         background: $color-white;
         color: $color-primary-light;
@@ -665,7 +659,7 @@
         }
     }
     
-    .projects-filter-dropdown {
+    .projects-index__filter-dropdown {
         display: none;
         position: absolute;
         top: 100%;
@@ -683,8 +677,8 @@
         }
     }
     
-    .project-filter-dropdown-item {
-        padding: 12px $spacing-md;
+    .projects-index__filter-dropdown-item {
+        padding: $spacing-12 $spacing-md;
         padding-left: 48px; // Space for checkmark
         border: none;
         background: $color-white;
@@ -733,7 +727,7 @@
         }
         
         &:hover {
-            background: rgba(2, 99, 94, 0.1); // Light teal on hover
+            background: $color-accent-teal-opacity-10; // Light teal on hover
         }
         
         &.active {
@@ -769,11 +763,10 @@
     @media (min-width: 1025px) {
         box-sizing: border-box;
         min-width: 0; // Allow flex shrinking
-        align-self: start; // Align to start to prevent overlap with left column
     }
 }
 
-.projects-index-right .project-list {
+.projects-index-right .projects-index__list {
     border: none;
     display: flex;
     flex-direction: column;
@@ -817,15 +810,8 @@
     // Note: Active state is now handled by JavaScript and CSS rule below
     // This ensures active cards show green background with white text
     
-    // Override base .project-card hover styles - force default colors
-    .project-meta,
-    .project-location,
-    .arrow-link {
-        color: inherit !important; // Reset from base .project-card styles
-    }
-    
-    // Force default text colors
-    .project-meta {
+    // Force default text colors (merged duplicate rules)
+    .project-card__meta {
         color: $color-text-secondary !important;
     }
     
@@ -833,73 +819,47 @@
         color: $color-accent-teal !important;
     }
     
-    .project-location {
+    .project-card__location {
         color: $color-primary-light !important;
     }
     
-    .arrow-link {
-        color: #7a8796 !important;
+    .project-card__arrow {
+        color: $color-text-secondary !important;
     }
     
     // Explicitly override base .project-card:hover when NOT hovered
     // This ensures the base hover styles don't apply by default
-    &:not(:hover):not(:focus):not(:focus-visible) {
+    // Merge focus and focus-visible states with same styles
+    &:not(:hover):not(:focus):not(:focus-visible),
+    &:focus,
+    &:focus-visible {
         background: $color-white !important; // Override any inherited hover styles from base .project-card
         
-        .project-meta {
+        .project-card__meta {
             color: $color-text-secondary !important; // Override base .project-card:hover
         }
         
-        .project-location {
+        .project-status {
+            color: $color-accent-teal !important;
+        }
+        
+        .project-card__location {
             color: $color-primary-light !important; // Override base .project-card:hover
         }
         
-        .arrow-link {
-            color: #7a8796 !important; // Override base .project-card:hover
+        .project-card__arrow {
+            color: $color-text-secondary !important; // Override base .project-card:hover
         }
     }
     
-    // Ensure focus state doesn't trigger hover effect
-    &:focus {
-        outline: none;
-        background: $color-white !important; // Keep white on focus
-        
-        .project-meta {
-            color: $color-text-secondary !important;
-        }
-        
-        .project-status {
-            color: $color-accent-teal !important;
-        }
-        
-        .project-location {
-            color: $color-primary-light !important;
-        }
-        
-        .arrow-link {
-            color: #7a8796 !important;
-        }
-    }
-    
+    // Focus-specific styles
+    &:focus,
     &:focus-visible {
-        outline: 2px solid $color-primary;
-        outline-offset: 2px;
-        background: $color-white !important; // Keep white on focus-visible
+        outline: none;
         
-        .project-meta {
-            color: $color-text-secondary !important;
-        }
-        
-        .project-status {
-            color: $color-accent-teal !important;
-        }
-        
-        .project-location {
-            color: $color-primary-light !important;
-        }
-        
-        .arrow-link {
-            color: #7a8796 !important;
+        &:focus-visible {
+            outline: 2px solid $color-primary;
+            outline-offset: 2px;
         }
     }
 
@@ -909,47 +869,25 @@
         background: $color-white !important;
     }
     
-    // Active state (when clicked) - green background with white text
-    &.active {
-        background: #02635E !important;
-        
-        .project-meta {
-            color: rgba(255, 255, 255, 0.8) !important;
-        }
-        
-        .project-status {
-            color: rgba(255, 255, 255, 0.9) !important;
-        }
-        
-        .project-location {
-            color: $color-white !important;
-        }
-        
-        .arrow-link {
-            color: $color-white !important;
-        }
-    }
-    
-    // Hover only (not focus, not active) - use :hover:not(:focus) to prevent focus from triggering hover
-    // This must override the base .project-card:hover rule
-    // Note: JavaScript will handle hover state, but CSS is fallback
+    // Active and hover states - green background with white text (merged duplicate rules)
+    &.active,
     &:hover:not(:focus):not(:focus-visible):not(.active) {
-        background: #02635E !important; // Change background to teal on hover - override base .project-card:hover
+        background: $color-accent-teal !important; // Change background to teal on hover/active
         
-        // Update text colors on hover for better contrast
-        .project-meta {
-            color: rgba(255, 255, 255, 0.8) !important;
+        // Update text colors for better contrast
+        .project-card__meta {
+            color: $color-white-opacity-80 !important;
         }
         
         .project-status {
-            color: rgba(255, 255, 255, 0.9) !important;
+            color: $color-white-opacity-90 !important;
         }
         
-        .project-location {
+        .project-card__location {
             color: $color-white !important;
         }
         
-        .arrow-link {
+        .project-card__arrow {
             color: $color-white !important;
         }
     }
@@ -983,7 +921,7 @@
         min-width: 0; // Allow shrinking
         flex-shrink: 0;
         overflow: hidden;
-        border-radius: 4px;
+        border-radius: $border-radius-md;
         display: block; // Use block for better aspect-ratio control
         aspect-ratio: 1 / 1; // Make image square
         width: clamp(120px, 15vw, 200px); // Responsive base width for mobile/tablet
@@ -1012,13 +950,13 @@
         overflow: hidden; // Prevent content overflow
     }
 
-    .project-info {
+    .project-card__info {
         display: flex;
         flex-direction: column;
         gap: $spacing-md; // Gap between meta and location
     }
 
-    .project-meta {
+    .project-card__meta {
         color: $color-text-secondary !important; // Force default color
         font-size: clamp(14px, 1.5vw, 16px); // Responsive font size
         font-weight: $font-weight-normal;
@@ -1033,7 +971,7 @@
         transition: color $transition-base; // Smooth color transition
     }
 
-    .project-location {
+    .project-card__location {
         font-size: clamp(18px, 2vw, 28px); // Responsive font size - reduced min to allow better fit
         color: $color-primary-light !important; // Force default color
         margin: 0;
@@ -1053,7 +991,7 @@
     // Desktop: Ensure text fits and wraps properly
     @media (min-width: 1025px) {
         .project-card-content {
-            .project-location {
+            .project-card__location {
                 // Use smaller font size range to ensure text fits
                 font-size: clamp(18px, 2vw, 26px);
                 // Text will wrap to next line if it doesn't fit
@@ -1062,8 +1000,8 @@
         }
     }
 
-    .arrow-link {
-        color: #7a8796 !important; // Force default color
+    .project-card__arrow {
+        color: $color-text-secondary !important; // Force default color
         width: clamp(40px, 4vw, 48px); // Responsive arrow size
         height: clamp(40px, 4vw, 48px);
         display: flex;
@@ -1089,18 +1027,15 @@
 @media (min-width: $breakpoint-tablet + 1) and (max-width: $breakpoint-desktop) {
     .projects-index {
         grid-template-columns: 40% 60%; // Same as desktop: left 40%, right 60%
-        margin: 0 clamp(15px, 3vw, 60px); // Scaled down margins from desktop
-        margin-bottom: clamp(30px, 4vw, 60px); // Add bottom margin for tablet
-        background: rgba(2, 99, 94, 0.05); // Teal background like desktop
+        margin: 0 clamp(15px, 3vw, 60px) clamp(30px, 4vw, 60px); // Scaled down margins with bottom margin
+        background: $color-accent-teal-opacity-05; // Teal background like desktop
         max-width: calc(100vw - clamp(30px, 6vw, 120px)); // Scaled down from desktop
-        min-height: auto; // Remove min-height on tablet to allow natural height
-        align-items: start; // Align grid items to start to prevent overlap
+        align-items: start; // Prevent columns from overlapping
     }
 
     .projects-index-left {
         padding: clamp(15px, 3vw, 60px); // Scaled down padding from desktop
         gap: clamp(20px, 2.5vw, 32px); // Scaled down gap from desktop
-        align-self: start; // Align to start to prevent overlap with right column
         
         h2 {
             font-size: clamp(36px, 5vw, 48px); // Scaled down from desktop
@@ -1116,12 +1051,12 @@
             gap: $spacing-sm; // Same gap as desktop
         }
         
-        .projects-filters-buttons {
+        .projects-index__filters-buttons {
             flex-direction: row; // Horizontal like desktop
             gap: $spacing-sm; // Same gap as desktop
         }
         
-        .project-filter {
+        .projects-index__filter {
             text-align: center; // Center align like desktop
         }
         
@@ -1132,10 +1067,9 @@
 
     .projects-index-right {
         padding: clamp(15px, 3vw, 60px); // Scaled down padding from desktop
-        align-self: start; // Align to start to prevent overlap with left column
-        overflow: hidden; // Prevent cards from overflowing
+        overflow: hidden; // Prevent cards from overflowing into left column
         
-        .project-list {
+        .projects-index__list {
             gap: clamp(20px, 2.5vw, 35px); // Scaled down gap from desktop
             align-items: flex-start; // Prevent cards from stretching
         }
@@ -1173,19 +1107,19 @@
             overflow: hidden;
         }
         
-        .project-info {
+        .project-card__info {
             display: flex;
             flex-direction: column;
             gap: $spacing-md; // Same gap as desktop
         }
         
-        .project-meta {
+        .project-card__meta {
             font-size: clamp(13px, 1.3vw, 15px); // Scaled down from desktop
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
         
-        .project-location {
+        .project-card__location {
             font-size: clamp(16px, 1.8vw, 24px); // Scaled down from desktop
             word-wrap: break-word;
             overflow-wrap: break-word;
@@ -1200,17 +1134,20 @@
 @media (max-width: $breakpoint-tablet) {
     .projects-index {
         background: rgba(2, 99, 94, 0.05); // Ensure teal background on mobile
-        min-height: auto; // Remove min-height to eliminate whitespace on mobile
+        min-height: auto; // Remove whitespace on mobile
     }
     
     .projects-index-left { // Remove all padding on mobile
         padding-top: $spacing-3xl; // Add top padding above h2 only (40px)
+        padding-bottom: $spacing-md; // Add bottom padding to prevent overlap
         gap: $spacing-sm; // Reduced gap between elements (16px)
         min-height: auto; // Remove any min-height
-        height: 0px; // Force height to 0
+        height: auto; // Allow natural height to contain filter
+        position: relative; // Ensure proper positioning
+        z-index: 10; // Ensure filter is above cards
 
         h2 {
-            font-size: 34px; // 34px on mobile
+            font-size: $spacing-34; // 34px on mobile
             font-weight: 300; // Light font weight
             margin: 0; // Remove all margin
             padding-top: 0; // No additional padding on h2 itself
@@ -1226,15 +1163,15 @@
             margin-bottom: 0; // Remove bottom margin/gap
         }
 
-        .projects-filter-input-wrapper {
+        .projects-index__filter-input-wrapper {
             display: none; // Hide filter input on mobile (use dropdown instead)
         }
 
-        .projects-filters-buttons {
+        .projects-index__filters-buttons {
             display: none; // Hide filter buttons on mobile
         }
         
-        .projects-filter-dropdown-wrapper {
+        .projects-index__filter-dropdown-wrapper {
             display: flex; // Use flex to position filter and clear button side by side
             align-items: flex-start; // Align to top so dropdown aligns properly
             gap: $spacing-sm; // Gap between filter button and clear button
@@ -1242,13 +1179,13 @@
             position: relative; // For dropdown positioning
         }
         
-        .projects-filter-dropdown-toggle {
+        .projects-index__filter-dropdown-toggle {
             flex: 1; // Take remaining space
             min-width: 0; // Allow shrinking
             position: relative; // For dropdown positioning context
         }
         
-        .projects-filter-dropdown {
+        .projects-index__filter-dropdown {
             position: absolute; // Position relative to wrapper
             top: 100%; // Below the buttons
             left: 0; // Align to left of wrapper
@@ -1259,7 +1196,7 @@
             box-sizing: border-box; // Include border in width calculation
         }
         
-        .projects-filter-clear-mobile {
+        .projects-index__filter-clear-mobile {
             display: flex; // Always visible
             width: 40px; // Fixed width to match filter button height
             min-width: 40px; // Minimum width
@@ -1326,12 +1263,14 @@
     .projects-index-right {
         padding: $spacing-md 0 $spacing-md $spacing-sm; // Minimal left padding, no right padding
         position: relative; // For scrollbar positioning
+        margin-top: 0; // Ensure no gap that could cause overlap
+        z-index: 1; // Below the filter section
     }
 
-    .projects-index-right .project-list {
+    .projects-index-right .projects-index__list {
         display: flex;
         flex-direction: column;
-        gap: 0; // Remove gap between cards
+        gap: $spacing-md; // Add gap between cards on mobile (20px)
         overflow-y: scroll; // Always show scrollbar (not auto-hide)
         overflow-x: hidden;
         -webkit-overflow-scrolling: touch;
@@ -1345,7 +1284,7 @@
         
         // Custom scrollbar styling - always visible
         scrollbar-width: thin; // Firefox: thin scrollbar (always visible)
-        scrollbar-color: #02635E rgba(2, 99, 94, 0.1); // Firefox: thumb color and visible track color
+        scrollbar-color: $color-accent-teal $color-accent-teal-opacity-10; // Firefox: thumb color and visible track color
         
         // Webkit scrollbar styling (Chrome, Safari, Edge) - always visible
         &::-webkit-scrollbar {
@@ -1354,22 +1293,22 @@
         }
         
         &::-webkit-scrollbar-track {
-            background: rgba(2, 99, 94, 0.1); // Visible track background
-            border-radius: 4px;
+            background: $color-accent-teal-opacity-10; // Visible track background
+            border-radius: $border-radius-md;
         }
         
         &::-webkit-scrollbar-thumb {
-            background: #02635E; // Teal color for thumb
-            border-radius: 4px; // Rounded corners
+            background: $color-accent-teal; // Teal color for thumb
+            border-radius: $border-radius-md; // Rounded corners
             -webkit-appearance: none; // Remove default styling
         }
         
         &::-webkit-scrollbar-thumb:hover {
-            background: #024d48; // Slightly darker teal on hover
+            background: color.adjust($color-accent-teal, $lightness: -5%); // Slightly darker teal on hover
         }
         
         &::-webkit-scrollbar-thumb:active {
-            background: #023a36; // Even darker when dragging
+            background: color.adjust($color-accent-teal, $lightness: -10%); // Even darker when dragging
         }
     }
 
@@ -1401,7 +1340,7 @@
             width: calc(100% - #{$spacing-md * 2}); // Subtract padding from width
             height: 200px !important; // Fixed image height
             margin: $spacing-md $spacing-md $spacing-sm $spacing-md; // Top and sides: 20px, bottom: 16px
-            border-radius: 4px; // Add border radius
+            border-radius: $border-radius-md; // Add border radius
             display: block; // Ensure image container displays on mobile
             overflow: hidden; // Ensure image doesn't overflow
             flex-shrink: 0; // Don't shrink image
@@ -1429,7 +1368,7 @@
             box-sizing: border-box;
         }
 
-        .project-info {
+        .project-card__info {
             width: 100%;
             display: flex !important;
             flex-direction: column;
@@ -1438,7 +1377,7 @@
             visibility: visible !important; // Ensure visibility
         }
 
-        .project-meta {
+        .project-card__meta {
             display: block !important;
             visibility: visible !important;
             font-size: $font-size-xs !important; // 14px for mobile
@@ -1450,7 +1389,7 @@
             padding: 0;
         }
 
-        .project-location {
+        .project-card__location {
             display: block !important;
             visibility: visible !important;
             font-size: $font-size-lg !important; // 20px for mobile
@@ -1462,7 +1401,7 @@
             padding: 0;
         }
 
-        .arrow-link {
+        .project-card__arrow {
             display: flex !important;
             visibility: visible !important;
             position: absolute; // Position absolutely

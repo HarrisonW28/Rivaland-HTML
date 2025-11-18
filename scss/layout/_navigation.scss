@@ -18,15 +18,14 @@
         .logo {
             color: $color-primary; // This will make ALAND black via currentColor
             
+            img,
             svg {
                 // ALAND paths use currentColor (will be $color-primary/black)
                 // RIV paths have explicit fill="#7DCAD8" (will stay teal)
-                height: $spacing-lg;
-                width: auto;
-            }
-            
-            img {
-                display: none; // Hide img if SVG is used instead
+                height: $spacing-lg !important;
+                width: auto !important;
+                max-width: none !important;
+                display: block;
             }
         }
         
@@ -42,10 +41,10 @@
             }
             
             &.active {
-                color: #02635E; // Teal for active
+                color: $color-accent-teal; // Teal for active
                 
                 &::after {
-                    background-color: #02635E;
+                    background-color: $color-accent-teal;
                 }
             }
         }
@@ -61,6 +60,12 @@
         }
         
         // Mobile menu with white background for white navbar
+        @media (max-width: $breakpoint-desktop) {
+            .contact-btn {
+                display: none !important;
+            }
+        }
+        
         @media (max-width: $breakpoint-tablet) {
             .nav-links {
                 background: $color-white; // White mobile menu to match navbar
@@ -73,7 +78,7 @@
                     }
                     
                     &.active {
-                        color: #02635E; // Teal for active
+                        color: $color-accent-teal; // Teal for active
                     }
                 }
             }
@@ -90,10 +95,20 @@
     font-size: $font-size-xl;
     letter-spacing: 3px;
     font-weight: $font-weight-semibold;
+    display: flex;
+    align-items: center;
 
-    img {
-        height: $spacing-lg;
-        width: auto;
+    img,
+    svg {
+        height: $spacing-lg !important;
+        width: auto !important;
+        max-width: none !important;
+        display: block;
+    }
+    
+    a {
+        display: flex;
+        align-items: center;
     }
 }
 
@@ -144,8 +159,8 @@
     a {
         color: rgba(255, 255, 255, 0.85);
         text-decoration: none;
-        font-size: 18px;
-        line-height: 38px;
+        font-size: $font-size-md; // 18px
+        line-height: $line-height-button;
         transition: $transition-fast;
         position: relative;
 
@@ -170,17 +185,17 @@
 }
 
 .contact-btn {
-    padding: 10px $spacing-xl;
+    padding: $spacing-10 $spacing-xl;
     border: 1px solid $color-white;
     color: $color-white;
     text-decoration: none;
     font-size: $font-size-sm;
-    border-radius: 2px;
+    border-radius: $border-radius-sm;
     transition: $transition-base;
 
     &:hover {
         background: $color-white;
-        color: #00263d;
+        color: $color-primary-dark;
     }
 }
 
@@ -207,6 +222,30 @@
     .nav {
         padding: $spacing-3xl $spacing-3xl;
     }
+    
+    .logo {
+        img,
+        svg {
+            height: $spacing-lg !important;
+            width: auto !important;
+            max-width: none !important;
+        }
+    }
+    
+    // Ensure white navbar logo is also consistent
+    .nav--white .logo {
+        img,
+        svg {
+            height: $spacing-lg !important;
+            width: auto !important;
+            max-width: none !important;
+        }
+    }
+    
+    // Hide contact button on tablet and mobile
+    .contact-btn {
+        display: none !important;
+    }
 }
 
 // Tablet Landscape (768px - 1024px)
@@ -214,6 +253,25 @@
     .nav {
         padding: $spacing-3xl $spacing-4xl;
     }
+    
+    .logo {
+        img,
+        svg {
+            height: $spacing-lg !important;
+            width: auto !important;
+            max-width: none !important;
+        }
+    }
+    
+    // Ensure white navbar logo is also consistent
+    .nav--white .logo {
+        img,
+        svg {
+            height: $spacing-lg !important;
+            width: auto !important;
+            max-width: none !important;
+        }
+    }
 
     .menu-toggle {
         display: none;
@@ -237,7 +295,7 @@
         }
 
         a {
-            font-size: $font-size-sm;
+            font-size: $font-size-md;
             padding: 0;
             color: rgba(255, 255, 255, 0.85);
         }
@@ -250,14 +308,31 @@
     }
 
     .contact-btn {
-        display: block;
-        padding: 10px $spacing-xl;
-        font-size: $font-size-sm;
+        display: none !important; // Hidden on tablet and mobile
     }
 }
 
 // Mobile Landscape Orientation
 @media (max-width: $breakpoint-desktop) and (orientation: landscape) {
+    .logo {
+        img,
+        svg {
+            height: $spacing-lg !important;
+            width: auto !important;
+            max-width: none !important;
+        }
+    }
+    
+    // Ensure white navbar logo is also consistent
+    .nav--white .logo {
+        img,
+        svg {
+            height: $spacing-lg !important;
+            width: auto !important;
+            max-width: none !important;
+        }
+    }
+    
     .menu-toggle {
         display: none;
     }
@@ -280,7 +355,7 @@
         }
 
         a {
-            font-size: $font-size-sm;
+            font-size: $font-size-md;
             padding: 0;
             color: rgba(255, 255, 255, 0.85);
         }
@@ -293,9 +368,7 @@
     }
 
     .contact-btn {
-        display: block;
-        padding: 10px $spacing-xl;
-        font-size: $font-size-sm;
+        display: none !important; // Hidden on mobile landscape
     }
 }
 
@@ -342,7 +415,7 @@
     }
 
     .contact-btn {
-        display: none;
+        display: none !important;
     }
 
     .nav-links {
@@ -432,12 +505,16 @@
             color: $color-primary;
             border-color: $color-primary;
             
+            .contact-arrow .button-arrow {
+                filter: brightness(0) !important; // Black arrow for light mode
+            }
+            
             &:hover {
                 background: $color-primary;
                 color: $color-white;
                 
                 .button-arrow {
-                    filter: brightness(0) invert(1);
+                    filter: brightness(0) invert(1) !important; // White arrow on hover
                 }
             }
         }
@@ -528,8 +605,21 @@
         position: relative;
         z-index: $z-menu-toggle-active;
 
-        img {
-            height: $spacing-md;
+        img,
+        svg {
+            height: $spacing-md !important;
+            width: auto !important;
+            max-width: none !important;
+        }
+    }
+    
+    // Ensure white navbar logo is also consistent on mobile
+    .nav--white .logo {
+        img,
+        svg {
+            height: $spacing-md !important;
+            width: auto !important;
+            max-width: none !important;
         }
     }
 }
@@ -538,6 +628,25 @@
 @media (max-width: $breakpoint-mobile) {
     .nav {
         padding: $spacing-md $spacing-2xl;
+    }
+    
+    .logo {
+        img,
+        svg {
+            height: $spacing-md !important;
+            width: auto !important;
+            max-width: none !important;
+        }
+    }
+    
+    // Ensure white navbar logo is also consistent on small mobile
+    .nav--white .logo {
+        img,
+        svg {
+            height: $spacing-md !important;
+            width: auto !important;
+            max-width: none !important;
+        }
     }
 }
 

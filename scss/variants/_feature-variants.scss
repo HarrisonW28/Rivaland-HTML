@@ -27,6 +27,7 @@
     background: $color-white;
     border-top: 1px solid $color-border;
     
+    .feature__image,
     .feature-image {
         background: $color-white;
         padding: $spacing-5xl;
@@ -44,6 +45,7 @@
         }
     }
     
+    .feature__copy,
     .feature-copy {
         background: $color-white;
         padding: $spacing-5xl;
@@ -67,6 +69,7 @@
             max-width: none;
         }
         
+        .feature__eyebrow,
         .feature-eyebrow {
             color: $color-primary;
             font-size: $font-size-2xl;
@@ -78,8 +81,8 @@
             background: $color-white;
             color: $color-text;
             border: 1px solid $color-border-light;
-            padding: 12px $spacing-md;
-            max-width: 305px;
+            padding: $spacing-12 $spacing-md;
+            max-width: $button-width-sm;
             
             .button-arrow {
                 filter: brightness(0);
@@ -113,10 +116,11 @@
         background: $color-white;
         border-top-color: $color-border;
         
+        .feature__copy,
         .feature-copy {
             background: $color-white;
             
-            > p:not(.feature-eyebrow) {
+            > p:not(.feature-eyebrow):not(.feature__eyebrow) {
                 color: $color-accent-teal;
             }
             
@@ -127,6 +131,7 @@
             }
         }
         
+        .feature__eyebrow,
         .feature-eyebrow {
             color: $color-primary;
         }
@@ -137,10 +142,12 @@
         background: $color-white;
         border-top-color: $color-border;
         
+        .feature__image,
         .feature-image {
             background: $color-white;
         }
         
+        .feature__copy,
         .feature-copy {
             background: $color-white;
             
@@ -152,6 +159,7 @@
                 color: $color-text;
             }
             
+            .feature__eyebrow,
             .feature-eyebrow {
                 color: $color-primary;
             }
@@ -202,10 +210,11 @@
         background: $color-primary;
         border-top-color: rgba(255, 255, 255, 0.2);
         
+        .feature__copy,
         .feature-copy {
             background: $color-primary;
             
-            > p:not(.feature-eyebrow) {
+            > p:not(.feature-eyebrow):not(.feature__eyebrow) {
                 color: rgba(255, 255, 255, 0.85);
             }
             
@@ -221,6 +230,7 @@
             }
         }
         
+        .feature__eyebrow,
         .feature-eyebrow {
             color: $color-white;
         }
@@ -231,10 +241,12 @@
         background: $color-primary;
         border-top-color: rgba(255, 255, 255, 0.2);
         
+        .feature__image,
         .feature-image {
             background: $color-primary;
         }
         
+        .feature__copy,
         .feature-copy {
             background: $color-primary;
             
@@ -246,6 +258,7 @@
                 color: rgba(255, 255, 255, 0.85);
             }
             
+            .feature__eyebrow,
             .feature-eyebrow {
                 color: $color-white;
             }

@@ -18,6 +18,22 @@ $color-border: #d0d0d0;
 $color-border-light: #e0e5eb;
 $color-border-mobile: #a8b8c8;
 
+// Color opacity variants (for rgba values)
+$color-white-opacity-05: rgba(255, 255, 255, 0.05);
+$color-white-opacity-10: rgba(255, 255, 255, 0.1);
+$color-white-opacity-15: rgba(255, 255, 255, 0.15);
+$color-white-opacity-20: rgba(255, 255, 255, 0.2);
+$color-white-opacity-30: rgba(255, 255, 255, 0.3);
+$color-white-opacity-70: rgba(255, 255, 255, 0.7);
+$color-white-opacity-80: rgba(255, 255, 255, 0.8);
+$color-white-opacity-85: rgba(255, 255, 255, 0.85);
+$color-white-opacity-90: rgba(255, 255, 255, 0.9);
+
+$color-accent-teal-opacity-05: rgba(2, 99, 94, 0.05);
+$color-accent-teal-opacity-10: rgba(2, 99, 94, 0.1);
+
+$color-primary-dark-opacity-55: rgba(0, 20, 40, 0.55);
+
 // Spacing
 $spacing-xs: 8px;
 $spacing-sm: 16px;
@@ -29,6 +45,17 @@ $spacing-3xl: 40px;
 $spacing-4xl: 60px;
 $spacing-5xl: 80px;
 $spacing-6xl: 100px;
+
+// Additional spacing values (for specific use cases)
+$spacing-4: 4px;
+$spacing-6: 6px;
+$spacing-10: 10px;
+$spacing-12: 12px;
+$spacing-30: 30px;
+$spacing-32: 32px;
+$spacing-34: 34px;
+$spacing-38: 38px;
+$spacing-50: 50px;
 
 // Typography
 $font-family: "Roboto", sans-serif;
@@ -51,6 +78,21 @@ $font-weight-normal: 400;
 $font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
+
+// Line heights
+$line-height-base: 1.6;
+$line-height-button: 38px; // Common line-height for buttons
+
+// Border radius
+$border-radius-sm: 2px;
+$border-radius-md: 4px;
+
+// Component-specific sizes
+$icon-size-sm: 19px; // Small icons (arrows, etc.)
+$icon-size-md: 44px; // Medium icons (buttons, toggles)
+$button-width-sm: 300px;
+$button-width-md: 416px;
+$image-size-md: 416px; // Standard image size for services
 
 // Breakpoints
 $breakpoint-mobile: 480px;

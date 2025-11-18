@@ -63,53 +63,83 @@
         </p>
     </section>
 
-    <section class="services">
-        <div class="services-card">
+    <section class="accordion accordion--services">
+        <div class="accordion--services__left">
+            <div class="accordion--services__card">
             <p class="eyebrow">Meeting all demands within the development market</p>
-            <a class="link-button link-button-offset" href="services.html">
-                What we offer <img src="assets/svg/arrow.svg" alt="arrow" class="button-arrow">
+                <a class="button button--primary" href="services.html">
+                    What we offer
+                    <span class="button__icon">
+                        <svg class="icon icon-arrow" width="19" height="16" viewBox="0 0 19 16" fill="none">
+                            <path d="M11 0.5L18.5 8M18.5 8L11 15.5M18.5 8H0.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
             </a>
+            </div>
         </div>
-        <div class="service-list">
-            <article class="service-item">
-                <div class="service-header">
+        <div class="accordion--services__right">
+            <div class="accordion">
+                <article class="accordion__item active">
+                    <div class="accordion__header">
                     <p>Consultancy</p>
-                    <button class="accordion-toggle" aria-label="collapse consultancy">+</button>
+                        <button class="accordion__toggle" aria-label="collapse consultancy">×</button>
                 </div>
-                <div class="service-content">
+                    <div class="accordion__content">
                     <p>Riva Land is a privately owned real estate development company based in London. We specialise in the acquisition, planning, and development of residential and mixed-use projects across the UK.</p>
-                    <a href="#" class="service-button">Discover more <img src="assets/svg/arrow.svg" alt="arrow" class="button-arrow"></a>
+                        <a href="#" class="accordion--services__button">
+                            Discover more
+                            <span class="button__icon">
+                                <svg class="icon icon-arrow" width="19" height="16" viewBox="0 0 19 16" fill="none">
+                                    <path d="M11 0.5L18.5 8M18.5 8L11 15.5M18.5 8H0.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </a>
                 </div>
             </article>
-            <article class="service-item">
-                <div class="service-header">
+                <article class="accordion__item">
+                    <div class="accordion__header">
                     <p>Acquisition</p>
-                    <button class="accordion-toggle" aria-label="expand acquisition">+</button>
+                        <button class="accordion__toggle" aria-label="expand acquisition">+</button>
                 </div>
-                <div class="service-content">
+                    <div class="accordion__content">
                     <p>Our acquisition services help you identify and secure the right land opportunities for your development projects.</p>
-                    <a href="#" class="service-button">Discover more <img src="assets/svg/arrow.svg" alt="arrow" class="button-arrow"></a>
+                        <a href="#" class="accordion--services__button">
+                            Discover more
+                            <span class="button__icon">
+                                <svg class="icon icon-arrow" width="19" height="16" viewBox="0 0 19 16" fill="none">
+                                    <path d="M11 0.5L18.5 8M18.5 8L11 15.5M18.5 8H0.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </a>
                 </div>
             </article>
-            <article class="service-item">
-                <div class="service-header">
+                <article class="accordion__item">
+                    <div class="accordion__header">
                     <p>Planning</p>
-                    <button class="accordion-toggle" aria-label="expand planning">+</button>
+                        <button class="accordion__toggle" aria-label="expand planning">+</button>
                 </div>
-                <div class="service-content">
+                    <div class="accordion__content">
                     <p>We navigate the complex planning system to secure planning consent and maximize land value for your projects.</p>
-                    <a href="#" class="service-button">Discover more <img src="assets/svg/arrow.svg" alt="arrow" class="button-arrow"></a>
+                        <a href="#" class="accordion--services__button">
+                            Discover more
+                            <span class="button__icon">
+                                <svg class="icon icon-arrow" width="19" height="16" viewBox="0 0 19 16" fill="none">
+                                    <path d="M11 0.5L18.5 8M18.5 8L11 15.5M18.5 8H0.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </a>
                 </div>
             </article>
+            </div>
         </div>
     </section>
 
     <section class="feature">
-        <div class="feature-image">
+        <div class="feature__image">
             <img src="assets/images/feature.jpg" alt="Rugged coastline with turquoise water">
         </div>
-        <div class="feature-copy">
-            <p class="feature-eyebrow">Unrivalled expertise</p>
+        <div class="feature__copy">
+            <p class="feature__eyebrow">Unrivalled expertise</p>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper interdum lacinia.
                 Vestibulum pretium ante ut ligula fermentum rhoncus eget id neque. Pellentesque sit
@@ -132,29 +162,29 @@
         </div>
         <div class="project-list">
             <article class="project-card">
-                <div class="project-info">
-                    <p class="project-meta">Residential / <span class="project-status">Application submitted</span></p>
-                    <p class="project-location">Woodcote,<br> South Oxfordshire</p>
+                <div class="project-card__info">
+                    <p class="project-card__meta">Residential / <span class="project-status">Application submitted</span></p>
+                    <p class="project-card__location">Woodcote,<br> South Oxfordshire</p>
                 </div>
-                <svg class="arrow-link" width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="project-card__arrow" width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 0.5L18.5 8M18.5 8L11 15.5M18.5 8H0.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </article>
             <article class="project-card">
-                <div class="project-info">
-                    <p class="project-meta">Commercial / <span class="project-status">Sold</span></p>
-                    <p class="project-location">Banbury,<br> Oxfordshire</p>
+                <div class="project-card__info">
+                    <p class="project-card__meta">Commercial / <span class="project-status">Sold</span></p>
+                    <p class="project-card__location">Banbury,<br> Oxfordshire</p>
                 </div>
-                <svg class="arrow-link" width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="project-card__arrow" width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 0.5L18.5 8M18.5 8L11 15.5M18.5 8H0.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </article>
             <article class="project-card">
-                <div class="project-info">
-                    <p class="project-meta">Residential / <span class="project-status">Application submitted</span></p>
-                    <p class="project-location">Cirencester,<br> Gloucestershire</p>
+                <div class="project-card__info">
+                    <p class="project-card__meta">Residential / <span class="project-status">Application submitted</span></p>
+                    <p class="project-card__location">Cirencester,<br> Gloucestershire</p>
                 </div>
-                <svg class="arrow-link" width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="project-card__arrow" width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 0.5L18.5 8M18.5 8L11 15.5M18.5 8H0.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </article>

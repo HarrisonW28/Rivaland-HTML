@@ -32,7 +32,7 @@
     width: 100% !important;
     margin: 80px auto 40px;
     padding: 80px;
-    font-size: 28px;
+    font-size: $font-size-3xl; // 28px
     font-weight: 300;
     display: flex;
     justify-content: center;
@@ -68,13 +68,19 @@
     width: 100% !important;
     margin: 0;
     padding: $spacing-5xl;
-    font-size: 28px;
+    font-size: $font-size-3xl; // 28px
     font-weight: $font-weight-light;
     
     p {
         max-width: 90%;
         margin: 0 auto;
         padding: 0 15px;
+    }
+    
+    // Mobile (≤768px) - set font size to 24px
+    @media (max-width: $breakpoint-tablet) {
+        font-size: $font-size-2xl; // 24px on mobile
+        padding: $spacing-3xl $spacing-md; // Match base intro mobile padding
     }
 }
 
@@ -92,7 +98,7 @@
     
     // About type with light colors
     &.intro--about {
-        color: #02635E;
+        color: $color-accent-teal;
     }
     
     // Services type with light colors
@@ -129,7 +135,7 @@
         max-width: 100%;
         margin: 0;
         padding: $spacing-5xl;
-        font-size: 28px;
+        font-size: $font-size-3xl; // 28px
         
         // Keep content centered with max-width
         p {

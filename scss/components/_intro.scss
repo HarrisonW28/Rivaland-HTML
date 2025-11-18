@@ -76,18 +76,18 @@
         max-width: 100%;
         margin: 0 auto;
         padding: $spacing-3xl $spacing-md;
-        font-size: $font-size-md;
+        font-size: $font-size-2xl; // 24px on mobile
         line-height: 1.6;
-        color: #02635E;
+        color: $color-accent-teal;
     }
 }
 
 // Small Mobile (≤480px)
 @media (max-width: $breakpoint-mobile) {
     .intro {
-        font-size: $font-size-base;
-        padding: 30px $spacing-md;
-        color: #02635E;
+        font-size: $font-size-2xl; // 24px on small mobile too
+        padding: $spacing-30 $spacing-md;
+        color: $color-accent-teal;
     }
 }
 

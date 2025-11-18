@@ -49,8 +49,13 @@
 @import 'layout/about';
 
 // 4. Components (reusable UI components)
+// Core standardized components (import first)
+@import 'components/button';
+@import 'components/card';
+@import 'components/icon';
+@import 'components/accordion';
+// Feature-specific components
 @import 'components/intro';
-@import 'components/services';
 @import 'components/feature';
 @import 'components/projects';
 @import 'components/news';
@@ -61,3 +66,4 @@
 @import 'variants/intro-variants';
 @import 'variants/feature-variants';
 @import 'variants/testimonial-variants';
+@import 'variants/accordion-variants';

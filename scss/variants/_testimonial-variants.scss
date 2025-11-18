@@ -39,7 +39,7 @@
     
     .testimonial-divider {
         width: 1px;
-        background: #9CB7B2;
+        background: $color-accent-teal-light;
         position: sticky;
         left: 0;
         z-index: 4;
@@ -90,7 +90,7 @@
             }
             
             blockquote {
-                font-size: 48px;
+                font-size: $font-size-7xl; // 48px
                 font-weight: $font-weight-light;
                 color: $color-primary;
                 margin: 0;
@@ -124,7 +124,7 @@
                 }
                 
                 .testimonial-company {
-                    color: #02635E;
+                    color: $color-accent-teal;
                 }
             }
         }
@@ -204,6 +204,11 @@
 
 // Mobile (≤768px)
 @media (max-width: $breakpoint-tablet) {
+        // Hide testimonial on services page on mobile
+        .accordion--page ~ .testimonial-section {
+            display: none !important;
+        }
+    
     .testimonial-section {
         display: flex;
         flex-direction: column;
@@ -260,7 +265,7 @@
             position: relative;
             width: 100%;
             height: 1px;
-            background: #9CB7B2;
+            background: $color-accent-teal-light;
         }
         
         .testimonial-left {
