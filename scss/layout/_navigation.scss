@@ -515,6 +515,12 @@
             padding: 0;
             margin: 0 auto;
         }
+        
+        // White navbar mobile logo styling
+        .nav--white .mobile-logo-img {
+            opacity: 0.4; // Keep opacity for white background
+            // ALAND paths are already #202A44 (black), RIV is #7DCAD8 (teal) in SVG
+        }
     }
 
     .logo {
