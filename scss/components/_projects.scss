@@ -13,6 +13,11 @@
     align-items: stretch;
     position: relative;
     
+    // Desktop (≥1025px) - Use fixed width for left column, fill remaining space for right
+    @media (min-width: $breakpoint-desktop + 1) {
+        grid-template-columns: 405px 1fr; // Fixed 405px for left, fill remaining for right
+    }
+    
     // On 1920px+, extend border to full width
     @media (min-width: 1920px) {
         border-top: none; // Hide regular border, use ::before for full-width
@@ -85,6 +90,15 @@
     flex-direction: column;
 }
 
+.project-list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $color-border-light;
+    height: 100%;
+    width: 100%; // Fill available grid column width
+    box-sizing: border-box;
+}
+
 .project-card {
     display: flex;
     align-items: center;
@@ -120,6 +134,7 @@
         gap: $spacing-6;
     position: relative;
     box-sizing: border-box;
+    text-align: left; // Ensure left alignment
 }
 
 .project-card__meta {
@@ -127,6 +142,7 @@
     font-size: $font-size-md;
     font-weight: $font-weight-normal;
     margin: 0;
+    text-align: left; // Ensure left alignment
 }
 
 .project-status {
@@ -137,6 +153,7 @@
     font-size: $font-size-3xl;
     color: $color-primary-light;
     margin: 0;
+    text-align: left; // Ensure left alignment
     
     br {
         display: none; // Hide line breaks on desktop
@@ -157,6 +174,7 @@
     top: 50%;
     transform: translateY(-50%);
     margin-left: auto;
+    margin-right: 50px; // Consistent margin across all designs
     
     svg {
         width: 100%;
@@ -292,6 +310,15 @@
             height: 115px;
             max-width: 847px;
             max-height: 115px;
+            text-align: left;
+        }
+        
+        .project-card__meta {
+            text-align: left;
+        }
+        
+        .project-card__location {
+            text-align: left;
         }
         
         .project-card__arrow {
@@ -299,6 +326,7 @@
             left: calc(72px + 847px); // Left padding (72px) + info width (847px)
             top: 50%;
             transform: translateY(-50%);
+            margin-right: 50px; // Consistent margin across all designs
         }
     }
 }
@@ -311,17 +339,96 @@
 @media (max-width: $breakpoint-desktop) {
     .projects {
         grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
 
         &-left {
             padding: $spacing-4xl $spacing-3xl;
+            order: 1;
+            
+            .projects-button {
+                display: none; // Hide original button, will be moved and shown as projects-button-mobile via JavaScript
+            }
+        }
+    }
+    
+    .project-list {
+        order: 2;
+    }
+    
+    // Show mobile button on tablet (including iPad Mini)
+    .projects-button-mobile {
+        order: 3;
+        display: flex !important;
+        width: calc(100% - 40px - 40px); // Subtract left and right padding (40px each)
+        max-width: 100%;
+        margin: $spacing-lg 40px $spacing-3xl 40px; // Top, right, bottom, left - match projects-left padding
+        padding: $spacing-md;
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid $color-accent-teal-light;
+        background: $color-white;
+        color: $color-black;
+        text-decoration: none;
+        font-family: Roboto;
+        font-weight: $font-weight-light;
+        font-size: $font-size-md;
+        line-height: $line-height-button;
+        @include button-hover-effect;
+    }
+}
+
+// Tablet Landscape (769px - 1024px) - Exclude iPad Mini at 768px
+@media (min-width: $breakpoint-tablet + 1) and (max-width: $breakpoint-desktop) {
+    .projects {
+        grid-template-columns: 1fr 2fr;
+        display: grid; // Override flex for larger tablets
+    }
+    
+    .projects-left {
+        .projects-button {
+            display: flex !important; // Show original button on tablet (not iPad Mini)
+        }
+    }
+    
+    // Hide mobile button on tablet (not iPad Mini)
+    .projects-button-mobile {
+        display: none !important;
+    }
+    
+    .project-card {
+        .project-card__info {
+            text-align: left;
+        }
+        
+        .project-card__meta {
+            text-align: left;
+        }
+        
+        .project-card__location {
+            text-align: left;
+        }
+        
+        .project-card__arrow {
+            transform: translateY(50%); // Transform for tablet (not iPad Mini)
         }
     }
 }
 
-// Tablet Landscape (768px - 1024px)
-@media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
-    .projects {
-        grid-template-columns: 1fr 2fr;
+// iPad Air (820px - 1180px)
+@media (min-width: 820px) and (max-width: 1180px) {
+    .project-card {
+        display: flex;
+        align-items: flex-start;
+        padding: 50px;
+        border-bottom: 1px solid #e0e5eb;
+        transition: background 0.3s ease;
+        cursor: pointer;
+        flex: 1;
+        min-height: 0;
+        position: relative;
+        gap: 0;
     }
 }
 
@@ -332,15 +439,23 @@
         flex-direction: column;
 
         &-left {
-            padding: $spacing-3xl; // Equal padding on all sides
+            padding: 65px 40px 34px 40px; // Top: 65px, Left/Right: 40px, Bottom: 34px
             order: 1;
             display: flex;
             flex-direction: column;
             gap: 0;
+            height: auto; // Fit to content height
+            min-height: auto; // Remove any min-height constraints
+            justify-content: flex-start; // Align to top instead of space-between
+            flex: none; // Remove flex: 0 0 405px on mobile
+            width: auto; // Remove fixed width
+            max-width: 100%; // Allow full width on mobile
+            border-right: none; // Remove border on mobile
 
             h2 {
                 font-size: $spacing-34; // 34px as specified
-                margin-bottom: $spacing-lg;
+                margin: 0; // Remove all margins and padding
+                padding: 0; // Remove any padding
                 order: 1;
             }
 
@@ -348,6 +463,14 @@
                 display: none; // Hide original button in projects-left, will be moved and shown after project-list via JavaScript
             }
         }
+    }
+
+    .project-list {
+        order: 2;
+        border: none;
+        border-top: 1px solid $color-border;
+        display: flex;
+        flex-direction: column;
     }
 
     .projects-index__list {
@@ -358,7 +481,7 @@
 
     .project-card {
         padding: $spacing-md;
-        padding-left: $spacing-md; // Reduced left padding to move text further left on mobile
+        padding-left: 40px; // Match projects-left left padding (40px)
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -375,10 +498,19 @@
         }
         
         .project-card__arrow {
-            align-self: flex-end; // Position arrow to bottom right
-            margin-top: auto; // Push to bottom
-            margin-right: $spacing-md; // Add whitespace on the right
-            margin-bottom: $spacing-xs; // Add whitespace at the bottom
+            color: #7a8796;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(50%);
+            margin-left: auto;
+            margin-right: 50px;
         }
         
         &:last-child {
@@ -390,9 +522,9 @@
     .projects-button-mobile {
         order: 3;
         display: flex !important;
-        width: calc(100% - #{$spacing-md * 2});
+        width: calc(100% - 40px - 40px); // Subtract left and right padding (40px each)
         max-width: 100%;
-        margin: $spacing-lg $spacing-md $spacing-3xl;
+        margin: $spacing-lg 40px $spacing-3xl 40px; // Top, right, bottom, left - match projects-left padding
         padding: $spacing-md;
         box-sizing: border-box;
         align-items: center;

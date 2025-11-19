@@ -468,6 +468,27 @@
         }
     }
     
+    // Show mobile button on tablet (including iPad Mini at 768px)
+    .link-button-mobile {
+        order: 3;
+        display: flex !important;
+        width: calc(100% - 40px - 40px); // Subtract left and right padding (40px each)
+        max-width: 100%;
+        margin: $spacing-lg 40px $spacing-3xl 40px; // Top, right, bottom, left - match 40px padding
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid $color-accent-teal-light;
+        background: $color-white;
+        color: $color-black;
+        text-decoration: none;
+        font-family: $font-family;
+        font-weight: $font-weight-light;
+        font-size: $font-size-md;
+        line-height: $line-height-button;
+        @include button-hover-effect;
+    }
+    
     .accordion--page {
         grid-template-columns: calc(10% + 30px) 1fr !important;
         padding: 0;
@@ -621,6 +642,36 @@
     }
 }
 
+// Tablet Landscape (769px - 1024px) - Exclude iPad Mini at 768px
+@media (min-width: $breakpoint-tablet + 1) and (max-width: $breakpoint-desktop) {
+    .accordion--services {
+        &__card {
+            // Use same animation as desktop - button at bottom
+            justify-content: space-between !important;
+            gap: $spacing-3xl !important;
+            transition: justify-content $transition-accordion !important;
+            overflow: hidden !important;
+            
+            .eyebrow {
+                order: 1 !important;
+                margin-bottom: 0 !important;
+            }
+            
+            .button {
+                order: 2 !important;
+                align-self: flex-start !important;
+                margin-top: auto !important; // Push button to bottom
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                position: relative !important;
+                width: $button-width-sm !important;
+                max-width: $button-width-sm !important;
+            }
+        }
+    }
+}
+
 // Mobile (≤768px)
 @media (max-width: $breakpoint-tablet) {
     .accordion--services {
@@ -639,7 +690,9 @@
         }
         
         &__card {
-            padding: 0 $spacing-sm;
+            padding: 0 40px; // Left/right: 40px
+            margin: 0; // Remove margin on mobile
+            min-height: 0; // Remove min-height on mobile
             order: 1;
             display: flex;
             flex-direction: column;
@@ -651,7 +704,7 @@
             .eyebrow {
                 font-size: $font-size-xl;
                 order: 1;
-                padding: 0 $spacing-sm;
+                padding: $spacing-md 0; // Top/bottom padding, no left/right padding
             }
             
             .button {
@@ -671,9 +724,9 @@
     .link-button-mobile {
         order: 3;
         display: flex !important;
-        width: calc(100% - #{$spacing-md * 2});
+        width: calc(100% - 40px - 40px); // Subtract left and right padding (40px each)
         max-width: 100%;
-        margin: $spacing-lg $spacing-md $spacing-3xl;
+        margin: $spacing-lg 40px $spacing-3xl 40px; // Top, right, bottom, left - match 40px padding
         box-sizing: border-box;
         align-items: center;
         justify-content: space-between;
@@ -688,8 +741,8 @@
         @include button-hover-effect;
     }
     
-    // Ensure button stays inside card on tablet (768px - 1024px)
-    @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
+    // Ensure button stays inside card on tablet (769px - 1024px) - Exclude iPad Mini at 768px
+    @media (min-width: $breakpoint-tablet + 1) and (max-width: $breakpoint-desktop) {
         .accordion--services__card {
             .button {
                 // Ensure button is inside card, not moved by JavaScript
@@ -701,7 +754,7 @@
             }
         }
         
-        // Hide mobile button style on tablet
+        // Hide mobile button style on tablet (but not iPad Mini)
         .link-button-mobile {
             display: none !important;
         }

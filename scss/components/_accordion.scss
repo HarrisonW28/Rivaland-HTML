@@ -161,7 +161,7 @@
         border-right: none;
         
         &__header {
-            padding: $spacing-md;
+            padding: $spacing-md 40px; // Top/bottom: 20px, left/right: 40px
             
             p {
                 font-size: $font-size-md;
@@ -169,11 +169,11 @@
         }
         
         &__content {
-            padding: 0 $spacing-md;
+            padding: 0 40px; // Left/right: 40px
         }
         
         &__item.active &__content {
-            padding: $spacing-md;
+            padding: $spacing-md 40px; // Top/bottom: 20px, left/right: 40px
         }
     }
 }

@@ -84,10 +84,10 @@
     .intro {
         max-width: 100%;
         margin: 0 auto;
-        padding: $spacing-3xl $spacing-md;
+        padding: $spacing-3xl 40px; // Top/bottom: 40px, left/right: 40px
         font-size: $font-size-2xl; // 24px on mobile
         line-height: 1.6;
-        color: $color-accent-teal;
+        color: $color-primary; // Consistent with desktop
     }
 }
 
@@ -95,8 +95,8 @@
 @media (max-width: $breakpoint-mobile) {
     .intro {
         font-size: $font-size-2xl; // 24px on small mobile too
-        padding: $spacing-30 $spacing-md;
-        color: $color-accent-teal;
+        padding: $spacing-30 40px; // Top/bottom: 30px, left/right: 40px
+        color: $color-primary; // Consistent with desktop
     }
 }
 

@@ -233,7 +233,54 @@
 // Mobile (≤768px)
 @media (max-width: $breakpoint-tablet) {
     .feature {
-        display: none !important; // Hide feature section on mobile
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto; // Two rows: one for image, one for copy
+        padding: 0;
+        
+        &__image,
+        &-image {
+            padding: $spacing-3xl 40px; // Top/bottom: 40px, left/right: 40px
+            grid-column: 1 !important;
+            grid-row: 1 !important;
+            width: 100%;
+            
+            img {
+                max-width: 100%; // Fit full width
+                width: 100%;
+                height: auto;
+                object-fit: cover; // Cover the full width
+            }
+        }
+
+        &__copy,
+        &-copy {
+            padding: 0 40px; // Top/bottom: 0, left/right: 40px
+            grid-column: 1 !important;
+            grid-row: 2 !important;
+            width: 100%;
+        }
+        
+        // Hide link-button on mobile/iPad Mini
+        .link-button {
+            display: none !important;
+        }
+    }
+    
+    // Services variant - image on right, copy on left (on desktop)
+    // On mobile, show image first, then copy
+    .feature--services {
+        .feature__image,
+        .feature-image {
+            grid-column: 1 !important;
+            grid-row: 1 !important;
+        }
+        
+        .feature__copy,
+        .feature-copy {
+            grid-column: 1 !important;
+            grid-row: 2 !important;
+        }
     }
 }
 

@@ -591,8 +591,8 @@
                 display: none;
                 
                 .mobile-logo-img {
-                    width: calc(100% - 40px) !important;
-                    max-width: calc(100% - 40px) !important;
+                    width: 100% !important;
+                    max-width: 100% !important;
                     margin: 0 auto;
                 }
             }

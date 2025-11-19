@@ -225,13 +225,26 @@
     }
 }
 
+// Tablet (769px - 1024px) - Exclude iPad Mini at 768px
+@media (min-width: $breakpoint-tablet + 1) and (max-width: $breakpoint-desktop) {
+    .news-card {
+        img {
+            margin: 20px; // 20px margin on all sides for tablet (not iPad Mini)
+            width: calc(100% - 40px); // Fit within news-content, accounting for 20px margin on each side
+            height: auto;
+            max-width: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
 // Mobile (≤768px)
 @media (max-width: $breakpoint-tablet) {
     .news {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: $spacing-3xl $spacing-md;
+        padding: $spacing-3xl 40px; // Top/bottom: 40px, left/right: 40px
         gap: $spacing-md;
     }
 
@@ -246,11 +259,12 @@
             height: auto;
             max-height: 300px;
             object-fit: cover;
+            margin: 0; // Remove all margin on mobile/iPad Mini
         }
     }
 
     .news-content {
-        padding: $spacing-lg $spacing-md;
+        padding: 20px; // 20px on all sides
         position: relative; // Allow absolute positioning of arrow
         flex: 1; // Take remaining space
         display: flex;
