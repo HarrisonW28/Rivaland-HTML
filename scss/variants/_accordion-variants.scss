@@ -52,6 +52,8 @@
         border-right: 1px solid $color-border;
         display: flex;
         align-items: stretch;
+        overflow: hidden;
+        box-sizing: border-box;
     }
     
     // Right column with accordion
@@ -76,6 +78,8 @@
         width: 100%;
         height: 100%;
         transition: justify-content $transition-accordion;
+        box-sizing: border-box;
+        overflow: hidden;
         
         .eyebrow {
             text-transform: none;
@@ -83,6 +87,8 @@
             color: $color-primary;
             line-height: 1.5;
             font-weight: $font-weight-normal;
+            width: 305px;
+            max-width: 305px;
         }
         
         .button {
@@ -420,10 +426,46 @@
 // RESPONSIVE STYLES
 // ============================================
 
-// Tablet (≤1024px)
+// Tablet (≤1024px) - iPad Mini, iPad Air, etc.
 @media (max-width: $breakpoint-desktop) {
     .accordion--services {
         grid-template-columns: 1fr 1fr;
+        
+        &__card {
+            // On tablet, ensure button comes right after eyebrow
+            justify-content: flex-start !important;
+            gap: $spacing-lg !important;
+            // Ensure card contains button properly
+            position: relative !important;
+            overflow: visible !important;
+            
+            .eyebrow {
+                order: 1 !important;
+                margin-bottom: 0 !important;
+            }
+            
+            .button {
+                order: 2 !important;
+                margin-top: 0 !important;
+                align-self: flex-start !important;
+                // Ensure button is visible and inside card
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                position: relative !important;
+                // Remove any mobile classes that might affect positioning
+                width: $button-width-sm !important;
+                max-width: $button-width-sm !important;
+            }
+            
+            // Ensure button with mobile class is reset on tablet
+            .button.link-button-mobile {
+                order: 2 !important;
+                margin: 0 !important;
+                width: $button-width-sm !important;
+                max-width: $button-width-sm !important;
+            }
+        }
     }
     
     .accordion--page {
@@ -624,7 +666,8 @@
         }
     }
     
-    // Style for button when moved after accordion (MOBILE ONLY)
+    // Style for button when moved after accordion (MOBILE ONLY - < 768px)
+    // On tablet (≥768px), button should stay inside accordion--services__card
     .link-button-mobile {
         order: 3;
         display: flex !important;
@@ -643,6 +686,25 @@
         font-size: $font-size-md;
         line-height: $line-height-button;
         @include button-hover-effect;
+    }
+    
+    // Ensure button stays inside card on tablet (768px - 1024px)
+    @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
+        .accordion--services__card {
+            .button {
+                // Ensure button is inside card, not moved by JavaScript
+                position: relative !important;
+                order: 2 !important;
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+        }
+        
+        // Hide mobile button style on tablet
+        .link-button-mobile {
+            display: none !important;
+        }
     }
     
     .accordion--page {

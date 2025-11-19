@@ -93,6 +93,9 @@
     display: flex;
     flex-direction: column;
     overflow: hidden; // Ensure content fits within container
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     
     @media (min-width: 1024px) {
         height: 922px;
@@ -106,6 +109,10 @@
         // Nav padding must match base .nav exactly: 68px $spacing-5xl on desktop
         // Responsive padding handled by _navigation.scss breakpoints
         // Don't override - let _navigation.scss handle all padding for consistency
+        // Ensure navbar scales responsively to full width
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
         
         @media (min-width: $breakpoint-desktop) {
             flex-shrink: 0;
@@ -136,18 +143,19 @@
         }
     }
     
-    // Ensure responsive padding matches other pages
-    @media (max-width: $breakpoint-desktop) {
-        .nav {
-            // Let _navigation.scss handle tablet padding
-            padding: $spacing-3xl $spacing-3xl !important;
-        }
-    }
+    // Note: Services page should NOT show contact button on tablet
+    // Contact button should only be visible on desktop (>1024px)
+    // Tablet breakpoint (768px - 1024px) should hide contact button like other pages
     
+    // Small tablet/mobile breakpoint
     @media (max-width: $breakpoint-tablet) {
         .nav {
             // Let _navigation.scss handle mobile padding
             padding: $spacing-lg $spacing-3xl !important;
+            // Ensure responsive width
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
         }
     }
     
@@ -155,6 +163,10 @@
         .nav {
             // Let _navigation.scss handle small mobile padding
             padding: $spacing-md $spacing-2xl !important;
+            // Ensure responsive width
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
         }
     }
     
@@ -386,11 +398,23 @@
         .nav {
             flex-shrink: 0;
             height: auto;
-            // Padding should match base nav responsive styles
-            // Don't override - let _navigation.scss handle it
+            // Use standard tablet padding (not desktop) to match other pages
+            // Ensure responsive width on tablet
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            // Ensure proper flexbox alignment
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
             
-            // Ensure logo sizing matches other pages on tablet
+            // Ensure logo stays left-aligned
             .logo {
+                order: 0 !important;
+                flex: 0 0 auto !important;
+                margin-right: auto !important;
+                text-align: left !important;
+                
                 img,
                 svg {
                     height: $spacing-lg !important; // 24px
@@ -399,17 +423,22 @@
                 }
             }
             
-            // Ensure nav links match other pages on tablet
-            .nav-links a {
-                font-size: $font-size-md !important; // 18px
-                line-height: $line-height-button !important;
+            // Ensure nav links match desktop
+            .nav-links {
+                order: 1 !important;
+                flex: 0 0 auto !important;
+                margin: 0 auto !important;
+                
+                a {
+                    font-size: $font-size-md !important; // 18px
+                    line-height: $line-height-button !important;
+                }
             }
-            
-            // Ensure contact button matches other pages on tablet
-            .contact-btn {
-                padding: $spacing-10 $spacing-xl !important;
-                font-size: $font-size-sm !important;
-            }
+        }
+        
+        // Hide contact button on tablet - should match other pages
+        .nav .contact-btn {
+            display: none !important;
         }
         
         .hero-content {

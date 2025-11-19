@@ -1,7 +1,8 @@
 // Mobile layout adjustments - button repositioning
 document.addEventListener('DOMContentLoaded', function() {
     // Import utilities (using inline for compatibility)
-    const BREAKPOINT_MOBILE = 768;
+    // Only move button on actual mobile devices (< 768px), not tablets (≥768px)
+    const BREAKPOINT_MOBILE = 767; // Use 767 so 768px (iPad Mini) is considered tablet
     
     function isMobile() {
         return window.innerWidth <= BREAKPOINT_MOBILE;
