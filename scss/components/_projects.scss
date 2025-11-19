@@ -174,7 +174,7 @@
     top: 50%;
     transform: translateY(-50%);
     margin-left: auto;
-    margin-right: 50px; // Consistent margin across all designs
+    margin-right: 40px; // Consistent margin across all designs
     
     svg {
         width: 100%;
@@ -326,7 +326,7 @@
             left: calc(72px + 847px); // Left padding (72px) + info width (847px)
             top: 50%;
             transform: translateY(-50%);
-            margin-right: 50px; // Consistent margin across all designs
+            margin-right: 40px; // Consistent margin across all designs
         }
     }
 }
@@ -510,7 +510,7 @@
             top: 50%;
             transform: translateY(50%);
             margin-left: auto;
-            margin-right: 50px;
+            margin-right: 40px;
         }
         
         &:last-child {
